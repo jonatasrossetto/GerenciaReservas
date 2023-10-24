@@ -13,8 +13,8 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Table(name="propostas")
-@Entity(name="Proposta")
+@Table(name="hospedes")
+@Entity(name="Hospede")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -36,7 +36,19 @@ public class Hospede {
 	private Date dataCadastro;
 	
 	public Hospede() {
-		
+	
+	}
+	
+	public Hospede(DadosCadastroHospede dados) {
+		this.usuarioId=dados.usuarioId();
+		this.numeroDocumento = dados.numeroDocumento();
+		this.tipoDocumento = dados.tipoDocumento();
+		this.nome = dados.nome();
+		this.telefone=dados.telefone();
+		this.email = dados.email();
+		this.endereco = dados.endereco();
+		this.dataNascimento=dados.dataNascimento();
+		this.dataCadastro = dados.dataCadastro();
 	}
 
 	public Long getId() {
