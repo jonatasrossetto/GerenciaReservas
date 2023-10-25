@@ -49,6 +49,22 @@ public class Reserva {
 	public Reserva() {
 		
 	}
+	
+	public Reserva(DadosCadastroReserva dados) {
+		this.acomodacaoId = dados.acomodacaoId();
+		this.hospedeId = dados.hospedeId();
+		this.usuarioId = dados.usuarioId();
+		this.dataReserva = dados.dataReserva();
+		this.dataEntrada = dados.dataEntrada();
+		this.dataSaida = dados.dataSaida();
+		this.quantidadePessoas = dados.quantidadePessoas();
+		this.dataHoraEntrada = dados.dataHoraEntrada();
+		this.dataHoraSaida = dados.dataHoraSaida();
+		this.valorDiaria = dados.valorDiaria();
+		this.valorPagoTotal = dados.valorPagoTotal();
+		this.formaPagamento = dados.formaDePagamento();
+		this.observacao = dados.observacao();
+	}
 
 	public Long getId() {
 		return id;
