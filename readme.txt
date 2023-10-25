@@ -12,6 +12,7 @@ A idéia é validar um MVP que mostre a viabilidade do sistema.
 
 Stack:
 * IDE Eclipse
+* Maven
 * Java + Spring Boot
 * flyway para migration
 * MySql
