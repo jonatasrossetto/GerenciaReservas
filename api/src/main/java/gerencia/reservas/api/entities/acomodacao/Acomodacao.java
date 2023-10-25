@@ -7,6 +7,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -36,6 +37,22 @@ public class Acomodacao {
 		this.quantidadeCamas = dados.quantidadeCamas();
 		this.valorDiaria=dados.valorDiaria();
 	}
+	
+	public void atualizarInformacoes(DadosAtualizacaoAcomodacao dados) {
+		if (dados.numero() != null ) {
+			this.numero = dados.numero();
+		}
+		if (dados.capacidadePessoas() != null ) {
+			this.capacidadePessoas = dados.capacidadePessoas();
+		}
+		if (dados.quantidadeCamas() != null ) {
+			this.quantidadeCamas = dados.quantidadeCamas();
+		}
+		if (dados.valorDiaria() != null ) {
+			this.valorDiaria = dados.valorDiaria();
+		}
+		
+	}
 
 	public Long getId() {
 		return id;
@@ -56,5 +73,6 @@ public class Acomodacao {
 	public BigDecimal getValorDiaria() {
 		return valorDiaria;
 	}
+	
 
 }
