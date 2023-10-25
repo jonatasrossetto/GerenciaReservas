@@ -8,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -89,6 +90,31 @@ public class Hospede {
 
 	public Date getDataCadastro() {
 		return dataCadastro;
+	}
+
+	public void atualizarInformacoes(DadosAtualizacaoHospede dados) {
+		if (dados.nome() != null ) {
+			this.nome = dados.nome();
+		}
+		if (dados.email() != null ) {
+			this.email = dados.email();
+		}
+		if (dados.numeroDocumento() != null ) {
+			this.numeroDocumento = dados.numeroDocumento();
+		}
+		if (dados.tipoDocumento() != null ) {
+			this.tipoDocumento = dados.tipoDocumento();
+		}
+		if (dados.endereco() != null ) {
+			this.endereco= dados.endereco();
+		}
+		if (dados.dataNascimento() != null ) {
+			this.dataNascimento = dados.dataNascimento();
+		}
+		if (dados.telefone() != null ) {
+			this.telefone = dados.telefone();
+		}
+		
 	}
 	
 	
