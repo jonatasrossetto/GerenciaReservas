@@ -1,5 +1,11 @@
 package gerencia.reservas.api.entities.acomodacao;
 
-public record DadosCadastroAcomodacao() {
+import java.math.BigDecimal;
+
+public record DadosCadastroAcomodacao(
+		Long numero,
+		Long capacidadePessoas,
+		Long quantidadeCamas,
+		BigDecimal valorDiaria) {
 
 }

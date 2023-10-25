@@ -1,5 +1,7 @@
 package gerencia.reservas.api.entities.acomodacao;
 
-public interface AcomodacaoRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface AcomodacaoRepository extends JpaRepository<Acomodacao, Long>{
 
 }

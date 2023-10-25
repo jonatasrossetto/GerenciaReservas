@@ -29,5 +29,32 @@ public class Acomodacao {
 
 	public Acomodacao() {
 	}
+	
+	public Acomodacao(DadosCadastroAcomodacao dados) {
+		this.numero = dados.numero();
+		this.capacidadePessoas = dados.capacidadePessoas();
+		this.quantidadeCamas = dados.quantidadeCamas();
+		this.valorDiaria=dados.valorDiaria();
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public Long getNumero() {
+		return numero;
+	}
+
+	public Long getCapacidadePessoas() {
+		return capacidadePessoas;
+	}
+
+	public Long getQuantidadeCamas() {
+		return quantidadeCamas;
+	}
+
+	public BigDecimal getValorDiaria() {
+		return valorDiaria;
+	}
 
 }
