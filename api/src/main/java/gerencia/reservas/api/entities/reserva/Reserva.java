@@ -65,6 +65,57 @@ public class Reserva {
 		this.formaPagamento = dados.formaDePagamento();
 		this.observacao = dados.observacao();
 	}
+	public void atualizarInformacoes(DadosAtualizacaoReserva dados) {
+		
+		if (dados.acomodacaoId()!=null) {
+			this.acomodacaoId = dados.acomodacaoId();	
+		}
+		
+		if (dados.hospedeId()!=null) {
+			this.hospedeId = dados.hospedeId();
+		}
+		
+		if (dados.usuarioId()!=null) {
+			this.usuarioId = dados.usuarioId();
+		}
+		
+		if (dados.dataEntrada()!=null) {
+			this.dataEntrada = dados.dataEntrada();
+		}
+		
+		if (dados.dataSaida()!=null) {
+			this.dataSaida = dados.dataSaida();
+		}
+		
+		if (dados.quantidadePessoas()!=null) {
+			this.quantidadePessoas = dados.quantidadePessoas();
+		}
+		
+		if (dados.dataHoraEntrada()!=null) {
+			this.dataHoraEntrada = dados.dataHoraEntrada();
+		}
+				
+		if (dados.dataHoraSaida()!=null) {
+			this.dataHoraSaida = dados.dataHoraSaida();
+		}
+		
+		if (dados.valorDiaria()!=null) {
+			this.valorDiaria = dados.valorDiaria();
+		}
+		
+		if (dados.valorPagoTotal()!=null) {
+			this.valorPagoTotal = dados.valorPagoTotal();
+		}
+		
+		if (dados.formaDePagamento()!=null) {
+			this.formaPagamento = dados.formaDePagamento();
+		}
+		
+		if (dados.observacao()!=null) {
+			this.observacao = dados.observacao();
+		}
+	}
+	
 
 	public Long getId() {
 		return id;

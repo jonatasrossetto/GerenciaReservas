@@ -1,5 +1,24 @@
 package gerencia.reservas.api.entities.reserva;
 
-public record DadosAtualizacaoReserva() {
+import java.math.BigDecimal;
+import java.sql.Date;
+import java.sql.Timestamp;
+
+public record DadosAtualizacaoReserva(
+		 Long id,
+		 Long acomodacaoId,
+		 Long hospedeId,
+		 Long usuarioId,
+		 Date dataReserva,
+		 Date dataEntrada,
+		 Date dataSaida,
+		 Long quantidadePessoas,
+		 Timestamp dataHoraEntrada,
+		 Timestamp dataHoraSaida,
+		 BigDecimal valorDiaria,
+		 BigDecimal valorPagoTotal,
+		 String formaDePagamento,
+		 String observacao
+		) {
 
 }

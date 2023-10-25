@@ -6,22 +6,19 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import gerencia.reservas.api.entities.hospede.DadosCadastroHospede;
-import gerencia.reservas.api.entities.hospede.DadosDetalhamentoHospede;
-import gerencia.reservas.api.entities.hospede.Hospede;
+import gerencia.reservas.api.entities.reserva.DadosAtualizacaoReserva;
 import gerencia.reservas.api.entities.reserva.DadosCadastroReserva;
 import gerencia.reservas.api.entities.reserva.DadosDetalhamentoReserva;
 import gerencia.reservas.api.entities.reserva.Reserva;
 import gerencia.reservas.api.entities.reserva.ReservaRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
-
-
 
 @RestController
 @RequestMapping("/reserva")
@@ -76,6 +73,22 @@ public class ReservaController {
 		}
 		repository.deleteById(id);
 		return ResponseEntity.noContent().build();
+	}
+	
+	@PutMapping
+	@Transactional
+	public ResponseEntity atualizar(@RequestBody @Valid DadosAtualizacaoReserva dados) {
+		System.out.println("** ATUALIZAR RESERVA ** ");
+		
+		if (!repository.existsById(dados.id())) {
+			return ResponseEntity.badRequest().body("Id de reserva inexistente");
+		}
+		
+		var reserva = repository.getReferenceById(dados.id());
+		
+		reserva.atualizarInformacoes(dados);
+		
+		return ResponseEntity.ok(new DadosDetalhamentoReserva(reserva));
 	}
 
 }
