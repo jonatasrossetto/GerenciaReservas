@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import gerencia.reservas.api.entities.acomodacao.AcomodacaoRepository;
+import gerencia.reservas.api.entities.hospede.HospedeRepository;
 import gerencia.reservas.api.entities.reserva.DadosAtualizacaoReserva;
 import gerencia.reservas.api.entities.reserva.DadosCadastroReserva;
 import gerencia.reservas.api.entities.reserva.DadosDetalhamentoReserva;
@@ -26,6 +28,12 @@ public class ReservaController {
 
 	@Autowired
 	private ReservaRepository repository;
+	
+	@Autowired
+	private HospedeRepository hospedeRepository;
+	
+	@Autowired
+	private AcomodacaoRepository acomodacaoRepository;
 	
 	@GetMapping("/hello")
 	public String HelloWorld() {
@@ -50,6 +58,20 @@ public class ReservaController {
 	@Transactional
 	public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroReserva dados, UriComponentsBuilder uriBuilder) {
 		System.out.println("** CADASTRAR RESERVA ** ");
+		if (!hospedeRepository.existsById(dados.hospedeId())) {
+			return ResponseEntity.badRequest().body("O hóspede informado não existe");
+		}
+		if (!acomodacaoRepository.existsById(dados.acomodacaoId())) {
+			return ResponseEntity.badRequest().body("A acomodação informada não existe");
+		}
+		var acomodacao = acomodacaoRepository.getReferenceById(dados.acomodacaoId());
+		if (acomodacao.getCapacidadePessoas()<dados.quantidadePessoas()) {
+			return ResponseEntity.badRequest().body("Quantidade de pessoas maior que a capacidade da acomodação");
+		}
+		
+		
+		//*verifica nas reservas para a acomodacaoId se a dataEntrada ou dataSaida informadas 
+		//estão dentro do período de alguma reserva já existente
 		var reserva = new Reserva(dados);
 		repository.save(reserva);
 		System.out.println("id reserva cadastrado:" + reserva.getId());
@@ -61,6 +83,13 @@ public class ReservaController {
 	public ResponseEntity listar() {
 		System.out.println("** LISTAR RESERVAS ** ");
 		var page = repository.findAll();
+		return ResponseEntity.ok(page);
+	}
+	
+	@GetMapping("/listarPorAcomodacao/{id}")
+	public ResponseEntity listarPorAcomodacao(@PathVariable Long id) {
+		System.out.println("** LISTAR RESERVAS POR ID DA ACOMODAÇÃO ** ");
+		var page = repository.findByAcomodacaoId(id);
 		return ResponseEntity.ok(page);
 	}
 	
