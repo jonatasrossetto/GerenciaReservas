@@ -1,8 +1,11 @@
 package gerencia.reservas.api.entities.reserva;
 
 import java.math.BigDecimal;
-import java.sql.Date;
 import java.sql.Timestamp;
+import java.time.LocalDate;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -35,9 +38,15 @@ public class Reserva {
 	@Column(name="usuario_id")
 	private Long usuarioId;
 	
-	private Date dataReserva;
-	private Date dataEntrada;
-	private Date dataSaida;
+	@DateTimeFormat(iso = ISO.DATE)
+	private LocalDate dataReserva;
+	
+	@DateTimeFormat(iso = ISO.DATE)
+	private LocalDate dataEntrada;
+	
+	@DateTimeFormat(iso = ISO.DATE)
+	private LocalDate dataSaida;
+	
 	private Long quantidadePessoas;
 	private Timestamp dataHoraEntrada;
 	private Timestamp dataHoraSaida;
@@ -133,15 +142,15 @@ public class Reserva {
 		return usuarioId;
 	}
 
-	public Date getDataReserva() {
+	public LocalDate getDataReserva() {
 		return dataReserva;
 	}
 
-	public Date getDataEntrada() {
+	public LocalDate getDataEntrada() {
 		return dataEntrada;
 	}
 
-	public Date getDataSaída() {
+	public LocalDate getDataSaída() {
 		return dataSaida;
 	}
 

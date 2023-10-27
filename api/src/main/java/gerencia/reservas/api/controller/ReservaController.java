@@ -1,5 +1,7 @@
 package gerencia.reservas.api.controller;
 
+import java.util.TimeZone;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -43,6 +45,7 @@ public class ReservaController {
 	@GetMapping("/{id}")
 	public ResponseEntity detalhar(@PathVariable Long id) {
 		System.out.println("** DETALHAR RESERVA ** ");
+		
 
 		// verifica se existe o id informado
 		if (!repository.existsById(id)) {
@@ -57,31 +60,13 @@ public class ReservaController {
 	@PostMapping
 	@Transactional
 	public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroReserva dados, UriComponentsBuilder uriBuilder) {
+		
 		System.out.println("** CADASTRAR RESERVA ** ");
-		System.out.println("entrada: "+dados.dataEntrada());
-		System.out.println("saida: "+dados.dataSaida());
-		if (dados.dataEntrada().equals(dados.dataSaida())) {
-			return ResponseEntity.badRequest().body("A data de entrada e de saída são iguais");
+		var conflito = verificaConflitoDeData(dados);
+		if (conflito!=null) {
+			return conflito;
 		}
-		if (!hospedeRepository.existsById(dados.hospedeId())) {
-			return ResponseEntity.badRequest().body("O hóspede informado não existe");
-		}
-		if (!acomodacaoRepository.existsById(dados.acomodacaoId())) {
-			return ResponseEntity.badRequest().body("A acomodação informada não existe");
-		}
-		var acomodacao = acomodacaoRepository.getReferenceById(dados.acomodacaoId());
-		if (acomodacao.getCapacidadePessoas()<dados.quantidadePessoas()) {
-			return ResponseEntity.badRequest().body("Quantidade de pessoas maior que a capacidade da acomodação");
-		}
-		var listaReservas = repository.findByAcomodacaoId(dados.acomodacaoId());
-		for (Reserva elemento : listaReservas) {
-			var conflitoDataEntrada = (dados.dataEntrada().after(elemento.getDataEntrada())&&dados.dataEntrada().before(elemento.getDataSaída()))||dados.dataEntrada().equals(elemento.getDataEntrada());
-			var conflitoDataSaida = dados.dataSaida().after(elemento.getDataEntrada())&&dados.dataSaida().before(elemento.getDataSaída());
-			if (conflitoDataEntrada||conflitoDataSaida) {
-				return ResponseEntity.badRequest().body("A acomodação já possui uma reserva dentro do período informado.");
-			}
-			
-		}
+		
 		var reserva = new Reserva(dados);
 		repository.save(reserva);
 		System.out.println("id reserva cadastrado:" + reserva.getId());
@@ -91,6 +76,7 @@ public class ReservaController {
 
 	@GetMapping()
 	public ResponseEntity listar() {
+		
 		System.out.println("** LISTAR RESERVAS ** ");
 		var page = repository.findAll();
 		return ResponseEntity.ok(page);
@@ -98,6 +84,7 @@ public class ReservaController {
 
 	@GetMapping("/listarPorAcomodacao/{id}")
 	public ResponseEntity listarPorAcomodacao(@PathVariable Long id) {
+		TimeZone.setDefault(TimeZone.getTimeZone("BRT"));
 		System.out.println("** LISTAR RESERVAS POR ID DA ACOMODAÇÃO ** ");
 		var page = repository.findByAcomodacaoId(id);
 		return ResponseEntity.ok(page);
@@ -118,6 +105,7 @@ public class ReservaController {
 	@Transactional
 	public ResponseEntity atualizar(@RequestBody @Valid DadosAtualizacaoReserva dados) {
 		System.out.println("** ATUALIZAR RESERVA ** ");
+		
 
 		if (!repository.existsById(dados.id())) {
 			return ResponseEntity.badRequest().body("Id de reserva inexistente");
@@ -130,4 +118,34 @@ public class ReservaController {
 		return ResponseEntity.ok(new DadosDetalhamentoReserva(reserva));
 	}
 
+	
+	private ResponseEntity verificaConflitoDeData(DadosCadastroReserva dados) {
+		System.out.println("entrada: "+dados.dataEntrada());
+		System.out.println("saida: "+dados.dataSaida());
+		if (dados.dataEntrada().equals(dados.dataSaida())) {
+			return ResponseEntity.badRequest().body("A data de entrada e de saída são iguais");
+		}
+		if (!hospedeRepository.existsById(dados.hospedeId())) {
+			return ResponseEntity.badRequest().body("O hóspede informado não existe");
+		}
+		if (!acomodacaoRepository.existsById(dados.acomodacaoId())) {
+			return ResponseEntity.badRequest().body("A acomodação informada não existe");
+		}
+		var acomodacao = acomodacaoRepository.getReferenceById(dados.acomodacaoId());
+		if (acomodacao.getCapacidadePessoas()<dados.quantidadePessoas()) {
+			return ResponseEntity.badRequest().body("Quantidade de pessoas maior que a capacidade da acomodação");
+		}
+				var listaReservas = repository.findByAcomodacaoId(dados.acomodacaoId());
+		for (Reserva elemento : listaReservas) {
+			var conflitoDataEntrada = (dados.dataEntrada().isAfter(elemento.getDataEntrada())&&dados.dataEntrada().isBefore(elemento.getDataSaída()))||dados.dataEntrada().equals(elemento.getDataEntrada());
+			var conflitoDataSaida = dados.dataSaida().isAfter(elemento.getDataEntrada())&&dados.dataSaida().isBefore(elemento.getDataSaída());
+			System.out.println("id: "+elemento.getId()+" entrada: "+elemento.getDataEntrada()+" saída: "+elemento.getDataSaída()+
+					" conflito entrada: "+conflitoDataEntrada+" conflito saída: "+conflitoDataSaida);
+			if (conflitoDataEntrada||conflitoDataSaida) {
+				return ResponseEntity.badRequest().body("A acomodação já possui uma reserva dentro do período informado. Conflito entrada:"+conflitoDataEntrada+" conflito saída: "+conflitoDataSaida);
+			}
+		}
+		return null;
+	}
+	
 }
