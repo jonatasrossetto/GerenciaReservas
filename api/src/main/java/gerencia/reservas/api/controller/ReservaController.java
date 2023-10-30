@@ -125,6 +125,9 @@ public class ReservaController {
 		if (dados.dataEntrada().equals(dados.dataSaida())) {
 			return ResponseEntity.badRequest().body("A data de entrada e de saída são iguais");
 		}
+		if (dados.dataEntrada().isAfter(dados.dataSaida())) {
+			return ResponseEntity.badRequest().body("A data de entrada é maior que a data de Saída");
+		}
 		if (!hospedeRepository.existsById(dados.hospedeId())) {
 			return ResponseEntity.badRequest().body("O hóspede informado não existe");
 		}
@@ -135,10 +138,11 @@ public class ReservaController {
 		if (acomodacao.getCapacidadePessoas()<dados.quantidadePessoas()) {
 			return ResponseEntity.badRequest().body("Quantidade de pessoas maior que a capacidade da acomodação");
 		}
-				var listaReservas = repository.findByAcomodacaoId(dados.acomodacaoId());
+		
+		var listaReservas = repository.findByAcomodacaoId(dados.acomodacaoId());
 		for (Reserva elemento : listaReservas) {
 			var conflitoDataEntrada = (dados.dataEntrada().isAfter(elemento.getDataEntrada())&&dados.dataEntrada().isBefore(elemento.getDataSaída()))||dados.dataEntrada().equals(elemento.getDataEntrada());
-			var conflitoDataSaida = dados.dataSaida().isAfter(elemento.getDataEntrada())&&dados.dataSaida().isBefore(elemento.getDataSaída());
+			var conflitoDataSaida = (dados.dataSaida().isAfter(elemento.getDataEntrada())&&dados.dataSaida().isBefore(elemento.getDataSaída()))||dados.dataSaida().isEqual(elemento.getDataSaída());
 			System.out.println("id: "+elemento.getId()+" entrada: "+elemento.getDataEntrada()+" saída: "+elemento.getDataSaída()+
 					" conflito entrada: "+conflitoDataEntrada+" conflito saída: "+conflitoDataSaida);
 			if (conflitoDataEntrada||conflitoDataSaida) {
