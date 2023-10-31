@@ -122,38 +122,6 @@ public class ReservaController {
 		return ResponseEntity.ok(new DadosDetalhamentoReserva(reserva));
 	}
 
-	
-//	private ResponseEntity verificaConflitoDeData(DadosCadastroReserva dados) {
-//		System.out.println("entrada: "+dados.dataEntrada());
-//		System.out.println("saida: "+dados.dataSaida());
-//		if (dados.dataEntrada().equals(dados.dataSaida())) {
-//			return ResponseEntity.badRequest().body("A data de entrada e de saída são iguais");
-//		}
-//		if (dados.dataEntrada().isAfter(dados.dataSaida())) {
-//			return ResponseEntity.badRequest().body("A data de entrada é maior que a data de Saída");
-//		}
-//		if (!hospedeRepository.existsById(dados.hospedeId())) {
-//			return ResponseEntity.badRequest().body("O hóspede informado não existe");
-//		}
-//		if (!acomodacaoRepository.existsById(dados.acomodacaoId())) {
-//			return ResponseEntity.badRequest().body("A acomodação informada não existe");
-//		}
-//		var acomodacao = acomodacaoRepository.getReferenceById(dados.acomodacaoId());
-//		if (acomodacao.getCapacidadePessoas()<dados.quantidadePessoas()) {
-//			return ResponseEntity.badRequest().body("Quantidade de pessoas maior que a capacidade da acomodação");
-//		}
-//		
-//		var listaReservas = repository.findByAcomodacaoId(dados.acomodacaoId());
-//		for (Reserva elemento : listaReservas) {
-//			var conflitoDataEntrada = (dados.dataEntrada().isAfter(elemento.getDataEntrada())&&dados.dataEntrada().isBefore(elemento.getDataSaída()))||dados.dataEntrada().equals(elemento.getDataEntrada());
-//			var conflitoDataSaida = (dados.dataSaida().isAfter(elemento.getDataEntrada())&&dados.dataSaida().isBefore(elemento.getDataSaída()))||dados.dataSaida().isEqual(elemento.getDataSaída());
-//			System.out.println("id: "+elemento.getId()+" entrada: "+elemento.getDataEntrada()+" saída: "+elemento.getDataSaída()+
-//					" conflito entrada: "+conflitoDataEntrada+" conflito saída: "+conflitoDataSaida);
-//			if (conflitoDataEntrada||conflitoDataSaida) {
-//				return ResponseEntity.badRequest().body("A acomodação já possui uma reserva dentro do período informado. Conflito entrada:"+conflitoDataEntrada+" conflito saída: "+conflitoDataSaida);
-//			}
-//		}
-//		return null;
-//	}
+
 	
 }
