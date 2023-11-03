@@ -1,5 +1,6 @@
 package gerencia.reservas.api.infra.security;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,7 @@ public class SecurityFilter extends OncePerRequestFilter {
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
 		System.out.println("** DO FILTER INTERNAL **");
+			
 		var tokenJWT = recuperarToken(request);
 		
 		if (tokenJWT != null) {
@@ -47,12 +49,26 @@ public class SecurityFilter extends OncePerRequestFilter {
 
 	private String recuperarToken(HttpServletRequest request) {
 		var authorizationHeader = request.getHeader("Authorization");
-		System.out.println("** RECUPERAR TOKEN JWT ** ");
-		System.out.println(authorizationHeader);
+		var contentType = request.getHeader("content-Type");
+		System.out.println("** RECUPERAR TOKEN JWT ** ");	
+//		System.out.println(authorizationHeader);
+//		System.out.println(contentType);
+//		System.out.println(request.getHeader("Access-Control-Allow-Origin"));
 		if (authorizationHeader != null) {
 			return authorizationHeader.replace("Bearer ", "");
 		}
 		return null;
+	}
+	
+	private String requestBody(HttpServletRequest request) throws IOException {
+		StringBuilder sb = new StringBuilder();
+	    BufferedReader reader = request.getReader();
+	    String line;
+	    while ((line = reader.readLine()) != null) {
+	      sb.append(line);
+	    }
+	    String requestBody = sb.toString();
+	    return requestBody;
 	}
 
 }
