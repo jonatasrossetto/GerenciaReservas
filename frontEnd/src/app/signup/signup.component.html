@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Registre um novo usuário</h1>
+    <br>
+    <form>
+        <div>
+            <label for="newUserEmail">Email</label><br>
+            <input type="email" name="newUserEmail" [(ngModel)]="newUserEmail"><br><br>
+            <label for="newUserPassword">Senha</label><br>
+            <input type="password" name="newUserPassword" [(ngModel)]="newUserPassword"><br><br>
+            <label for="newUserPasswordConfirmation">Confirme a Senha</label><br>
+            <input type="password" name="newUserPasswordConfirmation" [(ngModel)]="newUserPasswordConfirmation"><br><br>
+        </div>
+        <button id="Entrar" (click)="clickme()">Entrar</button>
+    </form>
+</body>
+
+</html>

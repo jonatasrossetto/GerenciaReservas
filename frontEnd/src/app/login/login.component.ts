@@ -42,10 +42,16 @@ export class LoginComponent {
         } else {
           console.log('token: ' + response.token);
           sessionStorage.setItem('accessToken', response.token);
+          console.log('leaving login page!!!');
+          this._router.navigate(['dashboard']);
         }
       })
       .catch((e) => {
         console.log('Error:' + e);
       });
+  }
+
+  telaSignUp() {
+    this._router.navigate(['signup']);
   }
 }

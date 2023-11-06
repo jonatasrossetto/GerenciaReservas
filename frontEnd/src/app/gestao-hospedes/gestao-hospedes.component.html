@@ -1,0 +1,27 @@
+<h1>gestao-hospedes works!</h1>
+<br>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let dado of listaDeHospedes">
+            <!-- <td>{{dado.movId}}</td> -->
+            <td>{{dado.id}}</td>
+            <td>{{dado.nome}}</td>
+            <td>{{dado.email}}</td>
+            <!-- <td>
+                <button type="button" class="btn btn-primary me-3" (click)="deleteBtn(dado.movId)">Delete</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    (click)="openEditModalBtn(dado.movId)">
+                    Edit
+                </button>
+            </td> -->
+        </tr>
+
+    </tbody>
+</table>
