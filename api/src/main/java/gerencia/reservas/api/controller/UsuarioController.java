@@ -35,7 +35,7 @@ public class UsuarioController {
 		var usuario = new Usuario(dados);
 		repository.save(usuario);
 		System.out.println("id cadastrado:"+usuario.getId());
-		return ResponseEntity.ok().build();
+		return ResponseEntity.ok("{ \" id \" : \" " + usuario.getId() + " \" }");
 	}
 		
 }

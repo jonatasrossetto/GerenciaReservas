@@ -51,7 +51,7 @@ public class SecurityFilter extends OncePerRequestFilter {
 		var authorizationHeader = request.getHeader("Authorization");
 		var contentType = request.getHeader("content-Type");
 		System.out.println("** RECUPERAR TOKEN JWT ** ");	
-//		System.out.println(authorizationHeader);
+		System.out.println(authorizationHeader);
 //		System.out.println(contentType);
 //		System.out.println(request.getHeader("Access-Control-Allow-Origin"));
 		if (authorizationHeader != null) {

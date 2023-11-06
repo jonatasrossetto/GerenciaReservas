@@ -10,12 +10,21 @@ cada um responsável por uma determinada entidade do domínio da aplicação.
 A idéia é validar um MVP que mostre a viabilidade do sistema.
 
 Stack:
-* IDE Eclipse
-* Maven
-* Java + Spring Boot
-* flyway para migration
-* MySql
-* JWT
+Back-end
+ * IDE Eclipse
+ * Maven
+ * Java + Spring Boot
+ * flyway para migration
+ * MySql
+ * JWT
+ * Postman
+Front-end
+ * Node.js
+ * Angular
+ * Bootstrap
+ * TypeScript
+ * Html / Css
+
 
 
 
