@@ -11,8 +11,10 @@
     <h1>Login Screen</h1>
     <form>
         <div>
+            <label for="inputUserEmail">Email</label><br>
             <input type="email" name="inputUserEmail" [(ngModel)]="inputUserEmail"><br><br>
-            <input type="password" name="inputUserPassword" [(ngModel)]="inputUserPassword">
+            <label for="inputUserPassword">Senha</label><br>
+            <input type="password" name="inputUserPassword" [(ngModel)]="inputUserPassword"><br><br>
         </div>
         <button id="Entrar" (click)="clickme()">Entrar</button>
     </form>

@@ -15,11 +15,11 @@ export class LoginComponent {
 
   clickme() {
     console.log('sign-in.js is running');
-    const authenticationData = {
+    const loginData = {
       login: this.inputUserEmail,
       senha: this.inputUserPassword,
     };
-    console.log(JSON.stringify(authenticationData));
+    console.log(JSON.stringify(loginData));
 
     fetch('http://localhost:8080/login', {
       method: 'POST',
@@ -27,20 +27,25 @@ export class LoginComponent {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(authenticationData),
+      body: JSON.stringify(loginData),
     })
-      .then((data) => {
-        if (!data.ok) {
-          console.log(data);
-          return;
+      .then((response) => {
+        if (!response.ok) {
+          return { error: response.status };
         }
-        return data.json();
+        return response.json();
       })
-      .then((teste) => {
-        console.log(teste);
+      .then((response) => {
+        if (response.error) {
+          console.log('Error: ' + response.error);
+          return;
+        } else {
+          console.log('token: ' + response.token);
+          sessionStorage.setItem('accessToken', response.token);
+        }
       })
       .catch((e) => {
-        console.log(e);
+        console.log('Error:' + e);
       });
   }
 }
