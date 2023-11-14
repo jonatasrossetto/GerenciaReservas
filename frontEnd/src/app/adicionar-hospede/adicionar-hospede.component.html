@@ -1,0 +1,54 @@
+<nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+        <p class="navbar-brand" (click)="goDashBoard()" style="cursor: pointer;">
+            Gerencia Pousada
+        </p>
+    </div>
+</nav>
+<div class="container">
+    <p class="text-center">Cadastrar Hóspede</p>
+</div>
+<div class="container">
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Nome</span>
+        <input [(ngModel)]="nome" class="form-control" placeholder="Nome completo" aria-label="Nome completo"
+            aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Número do documento</span>
+        <input [(ngModel)]="numeroDocumento" type="text" class="form-control" placeholder="Número do documento"
+            aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Tipo do documento</span>
+        <select [(ngModel)]="tipoDocumento" class="form-select" aria-label="Default select example">
+            <option selected>Passaporte</option>
+            <option value="1">Identidade</option>
+            <option value="2">Habilitação</option>
+        </select>
+
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Telefone</span>
+        <input [(ngModel)]="telefone" type="text" class="form-control" placeholder="Telefone" aria-label="Username"
+            aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Email</span>
+        <input [(ngModel)]="email" type="email" class="form-control" placeholder="email@email.com" aria-label="Username"
+            aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Endereço</span>
+        <input [(ngModel)]="endereco" type="text" class="form-control" placeholder="Nome completo" aria-label="Username"
+            aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Data de Nascimento</span>
+        <input [(ngModel)]="dataNascimento" type="date" class="form-control" placeholder="01/01/2023"
+            aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+    <button type="button" class="btn btn-primary" (click)="cadastrarHospede()">Cadastrar</button>
+
+
+</div>

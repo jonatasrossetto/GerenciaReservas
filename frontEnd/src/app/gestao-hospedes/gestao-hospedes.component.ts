@@ -27,6 +27,14 @@ export class GestaoHospedesComponent implements OnInit {
     },
   ];
 
+  goDashBoard() {
+    this._router.navigate(['dashboard']);
+  }
+
+  goAdicionarHospede() {
+    this._router.navigate(['adicionar-hospede']);
+  }
+
   ngOnInit() {
     const accessToken = sessionStorage.getItem('accessToken');
     console.log('accessToken: ' + accessToken);

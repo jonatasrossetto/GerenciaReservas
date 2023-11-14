@@ -17,7 +17,6 @@ import lombok.NoArgsConstructor;
 @Table(name="hospedes")
 @Entity(name="Hospede")
 @Getter
-@NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of="id")
 public class Hospede {
