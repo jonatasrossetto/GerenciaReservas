@@ -15,6 +15,7 @@
             <th scope="col">id</th>
             <th scope="col">Nome</th>
             <th scope="col">Email</th>
+            <th scope="col">Ações</th>
         </tr>
     </thead>
     <tbody>
@@ -23,13 +24,10 @@
             <td>{{dado.id}}</td>
             <td>{{dado.nome}}</td>
             <td>{{dado.email}}</td>
-            <!-- <td>
-                <button type="button" class="btn btn-primary me-3" (click)="deleteBtn(dado.movId)">Delete</button>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                    (click)="openEditModalBtn(dado.movId)">
-                    Edit
-                </button>
-            </td> -->
+            <td>
+                <button type="button" class="btn btn-primary me-3 btn-sm" (click)="deleteBtn(dado.id)">Delete</button>
+                <button type="button" class="btn btn-primary me-3 btn-sm" (click)="editarBtn(dado.id)">Editar</button>
+            </td>
         </tr>
 
     </tbody>

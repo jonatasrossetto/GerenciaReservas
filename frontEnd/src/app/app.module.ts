@@ -12,9 +12,10 @@ import { GestaoHospedesComponent } from './gestao-hospedes/gestao-hospedes.compo
 import { GestaoAcomodacaoComponent } from './gestao-acomodacao/gestao-acomodacao.component';
 import { GestaoReservaComponent } from './gestao-reserva/gestao-reserva.component';
 import { AdicionarHospedeComponent } from './adicionar-hospede/adicionar-hospede.component';
+import { EditarHospedeComponent } from './editar-hospede/editar-hospede.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, DashboardComponent, SignupComponent, GestaoHospedesComponent, GestaoAcomodacaoComponent, GestaoReservaComponent, AdicionarHospedeComponent],
+  declarations: [AppComponent, LoginComponent, DashboardComponent, SignupComponent, GestaoHospedesComponent, GestaoAcomodacaoComponent, GestaoReservaComponent, AdicionarHospedeComponent, EditarHospedeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -35,6 +35,40 @@ export class GestaoHospedesComponent implements OnInit {
     this._router.navigate(['adicionar-hospede']);
   }
 
+  editarBtn(id: number) {
+    console.log('click no botão editar hospede');
+    console.log(id);
+    // this._router.navigate(['editar-hospede'], { queryParams: { id: id } });
+    this._router.navigate(['editar-hospede'], {
+      queryParams: { id: id },
+    });
+    // this._router.navigate(['editar-hospede']);
+  }
+
+  deleteBtn(id: number) {
+    console.log('click no botão deletar hospede');
+    console.log(id);
+
+    fetch('http://localhost:8080/hospede/' + id, {
+      method: 'DELETE',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + sessionStorage.getItem('accessToken'),
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          return { error: response.status };
+        }
+        return response;
+      })
+      .then((response) => {
+        console.log(response);
+        this.ngOnInit();
+      });
+  }
+
   ngOnInit() {
     const accessToken = sessionStorage.getItem('accessToken');
     console.log('accessToken: ' + accessToken);

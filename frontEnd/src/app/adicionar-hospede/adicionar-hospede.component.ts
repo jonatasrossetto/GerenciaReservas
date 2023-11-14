@@ -26,14 +26,9 @@ export class AdicionarHospedeComponent {
   cadastrarHospede() {
     console.log('click no botão cadastrar hospede');
 
-    const date = new Date();
-    let day = date.getDate();
-    let month = date.getMonth() + 1;
-    let year = date.getFullYear();
-    // This arrangement can be altered based on how we want the date's format to appear.
-    let currentDate = `${year}-${month}-${day}`;
+    let currentDate = this.imprimeData(new Date());
+    console.log(this.dataNascimento);
 
-    console.log(currentDate); // "17-6-2022"
     let hospede = {
       usuarioId: 1,
       nome: this.nome,
@@ -75,5 +70,13 @@ export class AdicionarHospedeComponent {
       .catch((e) => {
         console.log('Error:' + e);
       });
+  }
+
+  imprimeData(data: Date): string {
+    let day = data.getUTCDate();
+    let month = data.getUTCMonth() + 1;
+    let year = data.getUTCFullYear();
+    console.log(`${year}-${month}-${day}`);
+    return `${year}-${month}-${day}`;
   }
 }

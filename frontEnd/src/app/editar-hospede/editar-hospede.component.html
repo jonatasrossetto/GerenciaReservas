@@ -1,0 +1,56 @@
+<nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+        <p class="navbar-brand" (click)="goDashBoard()" style="cursor: pointer;">
+            Gerencia Pousada
+        </p>
+    </div>
+</nav>
+<div class="container">
+    <p class="text-center">Editar Hóspede</p>
+</div>
+<div class="container">
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Nome</span>
+        <input [(ngModel)]="hospede.nome" class="form-control" placeholder="Nome completo" aria-label="Nome completo"
+            aria-describedby="basic-addon1" value="hospede.nome">
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Número do documento</span>
+        <input [(ngModel)]="hospede.numeroDocumento" type="text" class="form-control" placeholder="Número do documento"
+            aria-label="Username" aria-describedby="basic-addon1" value="hospede.numeroDocumento">
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Tipo do documento</span>
+        <select [(ngModel)]="hospede.tipoDocumento" class="form-select" aria-label="Default select example">
+            <option selected [innerText]="hospede.tipoDocumento"></option>
+            <option selected value="Passaporte">Passaporte</option>
+            <option value="Identidade">Identidade</option>
+            <option value="Habilitação">Habilitação</option>
+        </select>
+
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Telefone</span>
+        <input [(ngModel)]="hospede.telefone" type="text" class="form-control" placeholder="Telefone"
+            aria-label="Username" aria-describedby="basic-addon1" value="hospede.telefone">
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Email</span>
+        <input [(ngModel)]="hospede.email" type="email" class="form-control" placeholder="email@email.com"
+            aria-label="Username" aria-describedby="basic-addon1" value="hospede.email">
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Endereço</span>
+        <input [(ngModel)]="hospede.endereco" type="text" class="form-control" placeholder="Nome completo"
+            aria-label="Username" aria-describedby="basic-addon1" value="hospede.endereco">
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Data de Nascimento</span>
+        <input [(ngModel)]="hospede.dataNascimento" type="date" class="form-control" placeholder="01/01/2023"
+            aria-label="Username" aria-describedby="basic-addon1" value="hospede.dataNascimento">
+    </div>
+    <button type="button" class="btn btn-primary me-3" (click)="atualizarHospede()">Atualizar</button>
+    <button type="button" class="btn btn-primary me-3" (click)="goGestaoHospedes()">Cancelar</button>
+
+
+</div>
