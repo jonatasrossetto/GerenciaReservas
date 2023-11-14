@@ -23,6 +23,10 @@ export class AdicionarHospedeComponent {
     this._router.navigate(['dashboard']);
   }
 
+  goGestaoHospedes() {
+    this._router.navigate(['gestao-hospedes']);
+  }
+
   cadastrarHospede() {
     console.log('click no botão cadastrar hospede');
 

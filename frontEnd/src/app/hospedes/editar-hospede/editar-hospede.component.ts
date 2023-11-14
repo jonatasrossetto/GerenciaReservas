@@ -34,6 +34,7 @@ export class EditarHospedeComponent implements OnInit {
   atualizarHospede() {
     console.log('atualizar hospede');
     console.log(this.hospede);
+
     fetch('http://localhost:8080/hospede', {
       method: 'PUT',
       mode: 'cors',
@@ -55,7 +56,7 @@ export class EditarHospedeComponent implements OnInit {
           return;
         } else {
           console.log('Hospede atualizado com sucesso!');
-          // this.goDashBoard();
+          this.goGestaoHospedes();
         }
       })
       .catch((e) => {

@@ -1,0 +1,21 @@
+<nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+        <p class="navbar-brand" (click)="goDashBoard()" style="cursor: pointer;">
+            Gerencia Pousada
+        </p>
+    </div>
+</nav>
+<div class="container">
+    <p class="text-center">Cadastrar Acomodação</p>
+</div>
+<div class="container">
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Nome</span>
+        <input [(ngModel)]="numero" class="form-control" placeholder="Nome completo" aria-label="Nome completo"
+            aria-describedby="basic-addon1">
+    </div>
+
+    <button type="button" class="btn btn-primary" (click)="cadastrarAcomodacao()">Cadastrar</button>
+
+
+</div>

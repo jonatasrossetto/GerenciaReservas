@@ -9,10 +9,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SignupComponent } from './signup/signup.component';
 import { GestaoHospedesComponent } from './hospedes/gestao-hospedes/gestao-hospedes.component';
-import { GestaoAcomodacaoComponent } from './gestao-acomodacao/gestao-acomodacao.component';
+import { GestaoAcomodacaoComponent } from './acomodacoes/gestao-acomodacao/gestao-acomodacao.component';
 import { GestaoReservaComponent } from './gestao-reserva/gestao-reserva.component';
 import { AdicionarHospedeComponent } from './hospedes/adicionar-hospede/adicionar-hospede.component';
 import { EditarHospedeComponent } from './hospedes/editar-hospede/editar-hospede.component';
+import { AdicionarAcomodacaoComponent } from './acomodacoes/adicionar-acomodacao/adicionar-acomodacao.component';
+import { EditarAcomodacaoComponent } from './acomodacoes/editar-acomodacao/editar-acomodacao.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { EditarHospedeComponent } from './hospedes/editar-hospede/editar-hospede
     GestaoReservaComponent,
     AdicionarHospedeComponent,
     EditarHospedeComponent,
+    AdicionarAcomodacaoComponent,
+    EditarAcomodacaoComponent,
   ],
   imports: [
     BrowserModule,
