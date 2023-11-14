@@ -1,1 +1,47 @@
-<p>gestao-acomodacao works!</p>
+<nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+        <p class="navbar-brand pe-auto" (click)="goDashBoard()" style="cursor: pointer;">
+            Gerencia Pousada
+        </p>
+        <button class="btn btn-sm btn-outline-secondary" type="button" (click)="goAdicionarAcomodacao()">Adicionar
+            Acomodação</button>
+    </div>
+</nav>
+
+<br>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Número</th>
+            <th scope="col">Capacidade</th>
+            <th scope="col">Camas</th>
+            <th scope="col">Valor diária</th>
+            <th scope="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let dado of listaDeAcomodacoes">
+            <!-- <td>{{dado.movId}}</td> -->
+            <td>{{dado.id}}</td>
+            <td>{{dado.numero}}</td>
+            <td>{{dado.capacidadePessoas}}</td>
+            <td>{{dado.quantidadeCamas}}</td>
+            <td>{{dado.valorDiaria}}</td>
+            <td>
+                <button type="button" class="btn btn-primary me-3"
+                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                    (click)="deleteBtn(dado.id)">Excluir</button>
+                <button type="button" class="btn btn-primary me-3"
+                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                    (click)="editarBtn(dado.id)">Editar</button>
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+
+
+<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <p class="col-md-4 mb-0 text-muted">&copy; 2022 Company, Inc</p>
+</footer>

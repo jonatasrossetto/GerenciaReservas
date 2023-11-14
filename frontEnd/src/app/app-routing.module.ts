@@ -3,11 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SignupComponent } from './signup/signup.component';
-import { GestaoHospedesComponent } from './gestao-hospedes/gestao-hospedes.component';
+import { GestaoHospedesComponent } from './hospedes/gestao-hospedes/gestao-hospedes.component';
 import { GestaoAcomodacaoComponent } from './gestao-acomodacao/gestao-acomodacao.component';
 import { GestaoReservaComponent } from './gestao-reserva/gestao-reserva.component';
-import { AdicionarHospedeComponent } from './adicionar-hospede/adicionar-hospede.component';
-import { EditarHospedeComponent } from './editar-hospede/editar-hospede.component';
+import { AdicionarHospedeComponent } from './hospedes/adicionar-hospede/adicionar-hospede.component';
+import { EditarHospedeComponent } from './hospedes/editar-hospede/editar-hospede.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
