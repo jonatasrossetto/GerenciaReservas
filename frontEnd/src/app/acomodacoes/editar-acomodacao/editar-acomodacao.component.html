@@ -1,1 +1,36 @@
-<p>editar-acomodacao works!</p>
+<nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+        <p class="navbar-brand" (click)="goDashBoard()" style="cursor: pointer;">
+            Gerencia Pousada
+        </p>
+    </div>
+</nav>
+<div class="container">
+    <p class="text-center">Editar Acomodação</p>
+</div>
+<div class="container">
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Número</span>
+        <input [(ngModel)]="acomodacao.numero" class="form-control" placeholder="Número da acomodação"
+            aria-label="Número da acomodação" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Capacidade</span>
+        <input [(ngModel)]="acomodacao.capacidadePessoas" class="form-control" placeholder="Capacidade de hóspedes"
+            aria-label="Capacidade de hóspedes" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Camas</span>
+        <input [(ngModel)]="acomodacao.quantidadeCamas" class="form-control" placeholder="Quantidade de camas"
+            aria-label="Quantidade de camas" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Valor da Diária</span>
+        <input [(ngModel)]="acomodacao.valorDiaria" class="form-control" placeholder="Valor da diária"
+            aria-label="Valor da diária" aria-describedby="basic-addon1">
+    </div>
+
+    <button type="button" class="btn btn-primary me-3" (click)="atualizarAcomodacao()">Atualizar</button>
+    <button type="button" class="btn btn-primary me-3" (click)="goGestaoAcomodacao()">Cancelar</button>
+
+</div>
