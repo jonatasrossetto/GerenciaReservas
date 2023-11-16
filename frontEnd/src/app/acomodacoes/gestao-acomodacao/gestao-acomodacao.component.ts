@@ -21,10 +21,40 @@ export class GestaoAcomodacaoComponent implements OnInit {
       valorDiaria: 200.0,
     },
   ];
+
+  selectedId: number = 0;
+
+  selectedIdBtn(id: number) {
+    this.selectedId = id;
+  }
+
   goAdicionarAcomodacao() {
     this._router.navigate(['adicionar-acomodacao']);
   }
-  deleteBtn(id: number) {}
+  deleteBtn(id: number) {
+    console.log('click no botão deletar acomodação');
+    console.log(id);
+
+    fetch('http://localhost:8080/acomodacao/' + id, {
+      method: 'DELETE',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + sessionStorage.getItem('accessToken'),
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          return { error: response.status };
+        }
+        return response;
+      })
+      .then((response) => {
+        console.log(response);
+        this.ngOnInit();
+      });
+  }
+
   editarBtn(id: number) {
     this._router.navigate(['editar-acomodacao'], {
       queryParams: { id: id },
