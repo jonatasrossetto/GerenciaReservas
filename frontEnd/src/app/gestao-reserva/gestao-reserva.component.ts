@@ -71,7 +71,9 @@ export class GestaoReservaComponent implements OnInit {
 
   selectedId: number = 0;
 
-  editarBtn(id: number) {}
+  editarBtn(id: number) {
+    this._router.navigate(['editar-reserva']);
+  }
   deleteBtn(id: number) {}
 
   selectedIdBtn(id: number) {
@@ -82,6 +84,7 @@ export class GestaoReservaComponent implements OnInit {
     this._router.navigate(['dashboard']);
   }
   goAdicionarReserva() {
+    console.log('goAdicionarReserva');
     this._router.navigate(['adicionar-reserva']);
   }
 

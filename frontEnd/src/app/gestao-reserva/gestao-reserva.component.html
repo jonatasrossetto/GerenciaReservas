@@ -9,55 +9,59 @@
 </nav>
 
 <br>
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th scope="col">id</th>
-            <th scope="col">Acomodação</th>
-            <th scope="col">Hóspede</th>
-            <th scope="col">Entrada</th>
-            <th scope="col">Saída</th>
-            <th scope="col">Ações</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let dado of listaDeReservas">
-            <td>{{dado.id}}</td>
-            <td (click)="recuperaDadosAcomodacao(dado.acomodacao.id)">{{dado.acomodacao.numero}}</td>
-            <td (click)="recuperaDadosHospede(dado.hospede.id)">{{dado.hospede.nome}}</td>
-            <td>{{dado.dataEntrada}}</td>
-            <td>{{dado.dataSaida}}</td>
-            <td>
-                <button type="button" class="btn btn-outline-secondary me-3"
-                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
-                    (click)="selectedIdBtn(dado.id)" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal">Excluir</button>
-                <button type="button" class="btn btn-outline-secondary me-3"
-                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
-                    (click)="editarBtn(dado.id)">Editar</button>
-            </td>
+<div class="tableFixHead">
+    <table class="table table-hover ">
+        <thead>
+            <tr>
+                <th class="col-xs-3">id</th>
+                <th class="col-xs-3">Acomodação</th>
+                <th class="col-xs-3">Hóspede</th>
+                <th class="col-xs-3">Entrada</th>
+                <th class="col-xs-3">Saída</th>
+                <th class="col-xs-3">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let dado of listaDeReservas">
+                <td class="col-xs-3">{{dado.id}}</td>
+                <td class="col-xs-3" (click)="recuperaDadosAcomodacao(dado.acomodacao.id)">{{dado.acomodacao.numero}}
+                </td>
+                <td class="col-xs-3" (click)="recuperaDadosHospede(dado.hospede.id)">{{dado.hospede.nome}}</td>
+                <td class="col-xs-3">{{dado.dataEntrada}}</td>
+                <td class="col-xs-3">{{dado.dataSaida}}</td>
+                <td class="col-xs-3">
+                    <button type="button" class="btn btn-outline-secondary me-3"
+                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                        (click)="selectedIdBtn(dado.id)" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">Excluir</button>
+                    <button type="button" class="btn btn-outline-secondary me-3"
+                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                        (click)="editarBtn(dado.id)">Editar</button>
+                </td>
 
-        </tr>
-    </tbody>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmar Exclusão</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Deseja realmente excluir a acomodação Id: {{selectedId}}?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" (click)="deleteBtn(selectedId)"
-                        data-bs-dismiss="modal">Excluir</button>
+            </tr>
+        </tbody>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmar Exclusão</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Deseja realmente excluir a acomodação Id: {{selectedId}}?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" (click)="deleteBtn(selectedId)"
+                            data-bs-dismiss="modal">Excluir</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</table>
+    </table>
+</div>
+
 
 
 <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
