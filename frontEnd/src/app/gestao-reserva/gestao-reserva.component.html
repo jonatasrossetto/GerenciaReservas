@@ -23,8 +23,8 @@
     <tbody>
         <tr *ngFor="let dado of listaDeReservas">
             <td>{{dado.id}}</td>
-            <td (click)="recuperaDadosAcomodacao(dado.acomodacaoId)">{{dado.acomodacaoId}}</td>
-            <td (click)="recuperaDadosHospede(dado.hospedeId)">{{dado.hospedeId}}</td>
+            <td (click)="recuperaDadosAcomodacao(dado.acomodacao.id)">{{dado.acomodacao.numero}}</td>
+            <td (click)="recuperaDadosHospede(dado.hospede.id)">{{dado.hospede.nome}}</td>
             <td>{{dado.dataEntrada}}</td>
             <td>{{dado.dataSaida}}</td>
             <td>

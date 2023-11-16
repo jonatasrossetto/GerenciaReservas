@@ -15,8 +15,25 @@ export class GestaoReservaComponent implements OnInit {
   listaDeReservas = [
     {
       id: 0,
-      acomodacaoId: 0,
-      hospedeId: 0,
+      acomodacao: {
+        id: -1,
+        numero: -1,
+        capacidadePessoas: -1,
+        quantidadeCamas: -1,
+        valorDiaria: -1,
+      },
+      hospede: {
+        id: 0,
+        usuarioId: 0,
+        nome: '',
+        numeroDocumento: '',
+        tipoDocumento: '',
+        telefone: '',
+        email: '',
+        endereco: '',
+        dataNascimento: '',
+        dataCadastro: '',
+      },
       usuarioId: 0,
       dataReserva: '2023-10-25',
       dataEntrada: '2023-11-01',
@@ -28,8 +45,6 @@ export class GestaoReservaComponent implements OnInit {
       valorPagoTotal: null,
       formaDePagamento: null,
       observacao: 'observacao',
-      nomeHospede: 'nomeHospede',
-      numeroAcomodacao: 0,
     },
   ];
 
