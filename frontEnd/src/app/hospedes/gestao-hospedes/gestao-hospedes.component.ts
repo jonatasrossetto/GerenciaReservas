@@ -27,6 +27,12 @@ export class GestaoHospedesComponent implements OnInit {
     },
   ];
 
+  selectedId: number = 0;
+
+  selectedIdBtn(id: number) {
+    this.selectedId = id;
+  }
+
   goDashBoard() {
     this._router.navigate(['dashboard']);
   }
