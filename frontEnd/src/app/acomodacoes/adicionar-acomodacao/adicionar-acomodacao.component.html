@@ -10,12 +10,27 @@
 </div>
 <div class="container">
     <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Nome</span>
-        <input [(ngModel)]="numero" class="form-control" placeholder="Nome completo" aria-label="Nome completo"
+        <span class="input-group-text" id="basic-addon1">Número</span>
+        <input [(ngModel)]="numero" class="form-control" placeholder="Número da acomodação"
+            aria-label="Número da acomodação" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Capacidade</span>
+        <input [(ngModel)]="capacidade" class="form-control" placeholder="Capacidade de hóspedes"
+            aria-label="Capacidade de hóspedes" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Camas</span>
+        <input [(ngModel)]="camas" class="form-control" placeholder="Quantidade de camas"
+            aria-label="Quantidade de camas" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Valor da Diária</span>
+        <input [(ngModel)]="valorDiaria" class="form-control" placeholder="Valor da diária" aria-label="Valor da diária"
             aria-describedby="basic-addon1">
     </div>
 
-    <button type="button" class="btn btn-primary" (click)="cadastrarAcomodacao()">Cadastrar</button>
-
+    <button type="button" class="btn btn-primary me-3" (click)="cadastrarAcomodacao()">Cadastrar</button>
+    <button type="button" class="btn btn-primary me-3" (click)="goGestaoAcomodacao()">Cancelar</button>
 
 </div>
