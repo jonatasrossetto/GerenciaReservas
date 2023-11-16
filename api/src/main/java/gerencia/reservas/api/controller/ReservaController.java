@@ -1,5 +1,8 @@
 package gerencia.reservas.api.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import java.util.TimeZone;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +18,14 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import gerencia.reservas.api.domain.ReservaService;
+import gerencia.reservas.api.entities.acomodacao.Acomodacao;
 import gerencia.reservas.api.entities.acomodacao.AcomodacaoRepository;
+import gerencia.reservas.api.entities.hospede.Hospede;
 import gerencia.reservas.api.entities.hospede.HospedeRepository;
 import gerencia.reservas.api.entities.reserva.DadosAtualizacaoReserva;
 import gerencia.reservas.api.entities.reserva.DadosCadastroReserva;
 import gerencia.reservas.api.entities.reserva.DadosDetalhamentoReserva;
+import gerencia.reservas.api.entities.reserva.DadosListagemReserva;
 import gerencia.reservas.api.entities.reserva.Reserva;
 import gerencia.reservas.api.entities.reserva.ReservaRepository;
 import jakarta.transaction.Transactional;
@@ -80,10 +86,15 @@ public class ReservaController {
 
 	@GetMapping()
 	public ResponseEntity listar() {
-		
 		System.out.println("** LISTAR RESERVAS ** ");
 		var page = repository.findAll();
-		return ResponseEntity.ok(page);
+		List<DadosListagemReserva> lista = new ArrayList<DadosListagemReserva>();
+		for(Reserva reserva: page) {
+			Optional<Hospede> hospede = hospedeRepository.findById(reserva.getHospedeId());
+			Optional<Acomodacao> acomodacao = acomodacaoRepository.findById(reserva.getAcomodacaoId());
+			lista.add(new DadosListagemReserva(reserva,acomodacao,hospede,"usuário"));
+		}
+		return ResponseEntity.ok(lista);
 	}
 
 	@GetMapping("/listarPorAcomodacao/{id}")
