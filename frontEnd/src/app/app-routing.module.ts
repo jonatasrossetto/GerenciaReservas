@@ -24,8 +24,8 @@ const routes: Routes = [
   { path: 'editar-hospede', component: EditarHospedeComponent },
   { path: 'editar-acomodacao', component: EditarAcomodacaoComponent },
   { path: 'adicionar-acomodacao', component: AdicionarAcomodacaoComponent },
-  { path: 'adicionar-Reserva', component: AdicionarReservaComponent },
-  { path: 'editar-Reserva', component: EditarReservaComponent },
+  { path: 'adicionar-reserva', component: AdicionarReservaComponent },
+  { path: 'editar-reserva', component: EditarReservaComponent },
 ];
 
 @NgModule({
