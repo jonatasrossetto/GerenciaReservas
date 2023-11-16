@@ -10,6 +10,8 @@ import { AdicionarHospedeComponent } from './hospedes/adicionar-hospede/adiciona
 import { EditarHospedeComponent } from './hospedes/editar-hospede/editar-hospede.component';
 import { EditarAcomodacaoComponent } from './acomodacoes/editar-acomodacao/editar-acomodacao.component';
 import { AdicionarAcomodacaoComponent } from './acomodacoes/adicionar-acomodacao/adicionar-acomodacao.component';
+import { AdicionarReservaComponent } from './adicionar-reserva/adicionar-reserva.component';
+import { EditarReservaComponent } from './editar-reserva/editar-reserva.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -22,6 +24,8 @@ const routes: Routes = [
   { path: 'editar-hospede', component: EditarHospedeComponent },
   { path: 'editar-acomodacao', component: EditarAcomodacaoComponent },
   { path: 'adicionar-acomodacao', component: AdicionarAcomodacaoComponent },
+  { path: 'adicionar-Reserva', component: AdicionarReservaComponent },
+  { path: 'editar-Reserva', component: EditarReservaComponent },
 ];
 
 @NgModule({

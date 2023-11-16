@@ -15,6 +15,8 @@ import { AdicionarHospedeComponent } from './hospedes/adicionar-hospede/adiciona
 import { EditarHospedeComponent } from './hospedes/editar-hospede/editar-hospede.component';
 import { AdicionarAcomodacaoComponent } from './acomodacoes/adicionar-acomodacao/adicionar-acomodacao.component';
 import { EditarAcomodacaoComponent } from './acomodacoes/editar-acomodacao/editar-acomodacao.component';
+import { EditarReservaComponent } from './editar-reserva/editar-reserva.component';
+import { AdicionarReservaComponent } from './adicionar-reserva/adicionar-reserva.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { EditarAcomodacaoComponent } from './acomodacoes/editar-acomodacao/edita
     EditarHospedeComponent,
     AdicionarAcomodacaoComponent,
     EditarAcomodacaoComponent,
+    EditarReservaComponent,
+    AdicionarReservaComponent,
   ],
   imports: [
     BrowserModule,
