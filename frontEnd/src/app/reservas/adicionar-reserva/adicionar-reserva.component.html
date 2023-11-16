@@ -1,0 +1,48 @@
+<nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+        <p class="navbar-brand pe-auto" (click)="goDashBoard()" style="cursor: pointer;">
+            Gerencia Pousada
+        </p>
+    </div>
+</nav>
+<div class="container">
+    <p class="text-center">Cadastrar Reserva</p>
+</div>
+
+<div class="container">
+    <div class="input-group mb-3 date">
+        <span class="input-group-text col-2" id="basic-addon1">Data de Entrada</span>
+        <input [(ngModel)]="dataEntrada" class="form-control" placeholder="Data de Entrada" aria-label="Data de Entrada"
+            aria-describedby="basic-addon1" type="date" min="{{dataEntradaMin | date:'yyyy-MM-dd'}}"
+            (input)="ajustaDataSaidaMin()">
+
+        <span class="input-group-text col-2" id="basic-addon1">Data de Saída</span>
+        <input [(ngModel)]="dataSaida" class="form-control" placeholder="Data de Saída" aria-label="Data de Saída"
+            aria-describedby="basic-addon1" type="date" min="{{dataSaidaMin | date:'yyyy-MM-dd'}}" id="dataSaida">
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text col-2" id="basic-addon1">Hóspede</span>
+        <input [(ngModel)]="nomeHospede" class="form-control" placeholder="Hospede" aria-label="Hospede"
+            aria-describedby="basic-addon1" type="text">
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text col-2" id="basic-addon1">No. Hóspedes</span>
+        <input [(ngModel)]="quantidadePessoas" class="form-control" placeholder="Quantidade Hóspedes"
+            aria-label="Quantidade de hóspedes" aria-describedby="basic-addon1" type="number">
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text col-2" id="basic-addon1">No. Acomodação</span>
+        <input [(ngModel)]="numeroAcomodacao" class="form-control" placeholder="Número da Acomodação"
+            aria-label="Número da Acomodação" aria-describedby="basic-addon1" type="number">
+    </div>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text col-2" id="basic-addon1">Diária R$</span>
+        <input [(ngModel)]="valorDiaria" class="form-control" placeholder="Valor da Diária" aria-label="Valor da Diária"
+            aria-describedby="basic-addon1" type="number">
+    </div>
+
+    <button type="button" class="btn btn-primary me-3">Cadastrar</button>
+    <button type=" button" class="btn btn-primary me-3" (click)="goGestaoReserva()">Cancelar</button>
+
+</div>
