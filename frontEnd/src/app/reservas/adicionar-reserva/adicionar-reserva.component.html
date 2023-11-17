@@ -21,10 +21,12 @@
             aria-describedby="basic-addon1" type="date" min="{{dataSaidaMin | date:'yyyy-MM-dd'}}" id="dataSaida">
     </div>
     <div class="input-group mb-3">
-        <span class="input-group-text col-2" id="basic-addon1">Hóspede</span>
-        <input [(ngModel)]="nomeHospede" class="form-control" placeholder="Hospede" aria-label="Hospede"
-            aria-describedby="basic-addon1" type="text">
+        <button class="btn btn-outline-secondary col-2" type="button" id="button-addon1" data-bs-toggle="modal"
+            data-bs-target="#exampleModal">Hóspede</button>
+        <input [(ngModel)]="nomeHospede" type="text" class="form-control" placeholder="Nome do Hóspede"
+            aria-label="Nome do Hóspede" aria-describedby="button-addon1" disabled>
     </div>
+
     <div class="input-group mb-3">
         <span class="input-group-text col-2" id="basic-addon1">No. Hóspedes</span>
         <input [(ngModel)]="quantidadePessoas" class="form-control" placeholder="Quantidade Hóspedes"
@@ -42,7 +44,28 @@
             aria-describedby="basic-addon1" type="number">
     </div>
 
-    <button type="button" class="btn btn-primary me-3">Cadastrar</button>
+    <button type="button" class="btn btn-primary me-3" (click)="cadastrarReserva()">Cadastrar</button>
     <button type=" button" class="btn btn-primary me-3" (click)="goGestaoReserva()">Cancelar</button>
 
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Selecione o nome do hóspede</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <select class="form-select" size="10" aria-label="Size 3 select example" id="listaHospedes">
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Excluir</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

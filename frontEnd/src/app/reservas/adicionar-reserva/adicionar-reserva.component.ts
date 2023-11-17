@@ -35,4 +35,58 @@ export class AdicionarReservaComponent {
   goGestaoReserva() {
     this._router.navigate(['gestao-reserva']);
   }
+
+  cadastrarReserva() {
+    console.log('cadastrar reserva');
+    let hoje = new Date();
+    let reserva = {
+      acomodacaoId: 11,
+      hospedeId: 3,
+      usuarioId: 1,
+      dataReserva: this.imprimeData(hoje),
+      dataEntrada: this.dataEntrada.toString(),
+      dataSaida: this.dataSaida.toString(),
+      quantidadePessoas: this.quantidadePessoas,
+      dataHoraEntrada: null,
+      dataHoraSaida: null,
+      valorDiaria: this.valorDiaria,
+      valorPagoTotal: null,
+      formaDePagamento: null,
+      observacao: 'observação',
+    };
+    console.log(reserva);
+    fetch('http://localhost:8080/reserva', {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + sessionStorage.getItem('accessToken'),
+      },
+      body: JSON.stringify(reserva),
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((response) => {
+        if (response.error) {
+          console.log('Error: ' + response.error);
+          return;
+        } else {
+          console.log('Success: ' + response);
+          console.log('Reserva cadastrada com sucesso!');
+          this._router.navigate(['gestao-reserva']);
+        }
+      })
+      .catch((e) => {
+        console.log('Error:' + e);
+      });
+  }
+
+  imprimeData(data: Date): string {
+    let day = data.getUTCDate();
+    let month = data.getUTCMonth() + 1;
+    let year = data.getUTCFullYear();
+    console.log(`${year}-${month}-${day}`);
+    return `${year}-${month}-${day}`;
+  }
 }
