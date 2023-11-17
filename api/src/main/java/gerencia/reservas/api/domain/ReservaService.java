@@ -47,10 +47,11 @@ public class ReservaService {
 			var conflitoDataEntrada = (dados.dataEntrada().isAfter(elemento.getDataEntrada())&&dados.dataEntrada().isBefore(elemento.getDataSaída()))||dados.dataEntrada().equals(elemento.getDataEntrada());
 			var conflitoDataSaida = (dados.dataSaida().isAfter(elemento.getDataEntrada())&&dados.dataSaida().isBefore(elemento.getDataSaída()))||dados.dataSaida().isEqual(elemento.getDataSaída());
 			var conflitoInterno = (dados.dataEntrada().isBefore(elemento.getDataEntrada())&&dados.dataSaida().isAfter(elemento.getDataSaída()));
-//			System.out.println("id: "+elemento.getId()+" entrada: "+elemento.getDataEntrada()+" saída: "+elemento.getDataSaída()+
-//					" conflito entrada: "+conflitoDataEntrada+" conflito saída: "+conflitoDataSaida+" conflito interno: "+conflitoInterno);
+			System.out.println("id: "+elemento.getId()+" entrada: "+elemento.getDataEntrada()+" saída: "+elemento.getDataSaída()+
+					" conflito entrada: "+conflitoDataEntrada+" conflito saída: "+conflitoDataSaida+" conflito interno: "+conflitoInterno);
 			if (conflitoDataEntrada||conflitoDataSaida||conflitoInterno) {
-				return ResponseEntity.badRequest().body("A acomodação já possui uma reserva dentro do período informado. Conflito entrada:"+conflitoDataEntrada+" conflito saída: "+conflitoDataSaida+" conflito interno: "+conflitoInterno);
+				var texto = "A acomodação já possui uma reserva dentro do período informado. Conflito entrada:"+conflitoDataEntrada+" conflito saída: "+conflitoDataSaida+" conflito interno: "+conflitoInterno; 
+				return ResponseEntity.badRequest().body("{\"error\":\""+texto+"\"}");
 			}
 		}
 		return null;
