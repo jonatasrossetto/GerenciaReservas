@@ -14,11 +14,11 @@ export class GestaoAcomodacaoComponent implements OnInit {
 
   listaDeAcomodacoes = [
     {
-      id: 3,
-      numero: 2,
-      capacidadePessoas: 4,
-      quantidadeCamas: 2,
-      valorDiaria: 200.0,
+      id: 0,
+      numero: 0,
+      capacidadePessoas: 0,
+      quantidadeCamas: 0,
+      valorDiaria: 0,
     },
   ];
 
