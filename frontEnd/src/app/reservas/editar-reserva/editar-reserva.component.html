@@ -1,1 +1,95 @@
-<p>editar-reserva works!</p>
+<nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+        <p class="navbar-brand pe-auto" (click)="goDashBoard()" style="cursor: pointer;">
+            Gerencia Pousada
+        </p>
+    </div>
+</nav>
+<div class="container">
+    <p class="text-center">Editar Reserva</p>
+</div>
+
+<div class="container">
+    <div class="input-group mb-3 date">
+        <span class="input-group-text col-2" id="basic-addon1">Data de Entrada</span>
+        <input [(ngModel)]="reserva.dataEntrada" class="form-control" placeholder="Data de Entrada"
+            aria-label="Data de Entrada" aria-describedby="basic-addon1" type="date"
+            min="{{dataEntradaMin | date:'yyyy-MM-dd'}}" (input)="ajustaDataSaidaMin()">
+
+        <span class="input-group-text col-2" id="basic-addon1">Data de Saída</span>
+        <input [(ngModel)]="reserva.dataSaida" class="form-control" placeholder="Data de Saída"
+            aria-label="Data de Saída" aria-describedby="basic-addon1" type="date"
+            min="{{dataSaidaMin | date:'yyyy-MM-dd'}}" id="dataSaida">
+    </div>
+    <div class="input-group mb-3">
+        <button class="btn btn-outline-secondary col-2" type="button" id="button-addon1" data-bs-toggle="modal"
+            data-bs-target="#hospedeModal">Hóspede</button>
+        <input [(ngModel)]="nomeHospede" type="text" class="form-control" placeholder="Nome do Hóspede"
+            aria-label="Nome do Hóspede" aria-describedby="button-addon1" disabled>
+    </div>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text col-2" id="basic-addon1">No. Hóspedes</span>
+        <input [(ngModel)]="reserva.quantidadePessoas" class="form-control" placeholder="Quantidade Hóspedes"
+            aria-label="Quantidade de hóspedes" aria-describedby="basic-addon1" type="number">
+    </div>
+    <div class="input-group mb-3">
+        <button class="btn btn-outline-secondary col-2" type="button" id="button-addon1" data-bs-toggle="modal"
+            data-bs-target="#acomodacaoModal">Acomodação</button>
+        <input [(ngModel)]="acomodacao" type="text" class="form-control" placeholder="Número da Acomodação"
+            aria-label="Número da acomodação" aria-describedby="button-addon1" disabled>
+
+    </div>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text col-2" id="basic-addon1">Diária R$</span>
+        <input [(ngModel)]="reserva.valorDiaria" class="form-control" placeholder="Valor da Diária"
+            aria-label="Valor da Diária" aria-describedby="basic-addon1" type="number">
+    </div>
+
+    <button type="button" class="btn btn-primary me-3" (click)="atualizarReserva()">Atualizar</button>
+    <button type=" button" class="btn btn-primary me-3" (click)="goGestaoReserva()">Cancelar</button>
+
+    <div class="modal fade" id="hospedeModal" tabindex="-1" aria-labelledby="hospedeModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="hospedeModalLabel">Selecione o nome do hóspede</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <select class="form-select" size="10" aria-label="Size 3 select example" id="listaHospedes">
+
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                        (click)="escolherHospede()">Escolher</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="acomodacaoModal" tabindex="-1" aria-labelledby="acomodacaoModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="acomodacaoModalLabel">Selecione a Acomodação</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <select class="form-select" size="8" aria-label="Size 3 select example" id="listaAcomodacoes">
+
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                        (click)="escolherAcomodacao()">Escolher</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
