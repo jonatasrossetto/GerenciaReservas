@@ -1,0 +1,27 @@
+<nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+        <p class="navbar-brand pe-auto" (click)="goDashBoard()" style="cursor: pointer;">
+            Gerencia Pousada
+        </p>
+    </div>
+</nav>
+<div class="container">
+    <p class="text-center">Atualizar Data de Check-in</p>
+</div>
+
+<div class="container col-6">
+    <div class="input-group mb-3 date">
+        <span class="input-group-text col-4" id="basic-addon1">Data de Check-in</span>
+        <input [(ngModel)]="reserva.dataHoraEntrada" class="form-control" placeholder="Data de Entrada"
+            aria-label="Data de Entrada" aria-describedby="basic-addon1" type="date"
+            min="{{dataCheckIn| date:'yyyy-MM-dd'}}">
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text">Observações</span>
+        <textarea class="form-control" aria-label="observações" style="height: 200px;"
+            [(ngModel)]="reserva.observacao"></textarea>
+    </div>
+
+    <button type="button" class="btn btn-primary me-3" (click)="atualizarReserva()">Atualizar</button>
+    <button type=" button" class="btn btn-primary me-3" (click)="goGestaoReserva()">Cancelar</button>
+</div>
