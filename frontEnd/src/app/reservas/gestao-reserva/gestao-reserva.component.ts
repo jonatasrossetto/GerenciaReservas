@@ -71,12 +71,25 @@ export class GestaoReservaComponent implements OnInit {
 
   selectedId: number = 0;
 
-  checkInBtn(id: number) {}
-  checkOutBtn(id: number) {}
+  checkInBtn(id: number) {
+    console.log('click no botão check-in');
+    console.log(id);
+    this._router.navigate(['reserva-checkin'], {
+      queryParams: { id: id },
+    });
+  }
+
+  checkOutBtn(id: number) {
+    console.log('click no botão check-out');
+    console.log(id);
+    this._router.navigate(['reserva-checkout'], {
+      queryParams: { id: id },
+    });
+  }
 
   deleteBtn(id: number) {
     console.log('click no botão excluir reserva');
-    console.log(id);
+    // console.log(id);
 
     fetch('http://localhost:8080/reserva/' + id, {
       method: 'DELETE',
@@ -120,7 +133,7 @@ export class GestaoReservaComponent implements OnInit {
 
   ngOnInit(): void {
     const accessToken = sessionStorage.getItem('accessToken');
-    console.log('accessToken: ' + accessToken);
+    // console.log('accessToken: ' + accessToken);
     if (accessToken !== null) {
       const authToken = 'Bearer ' + accessToken;
       fetch('http://localhost:8080/reserva', {
@@ -141,9 +154,9 @@ export class GestaoReservaComponent implements OnInit {
         })
         .then((data) => {
           this.listaDeReservas = data; // update table view
-          this.listaDeReservas.forEach((reserva) => {
-            console.log(JSON.stringify(reserva));
-          });
+          // this.listaDeReservas.forEach((reserva) => {
+          //   console.log(JSON.stringify(reserva));
+          // });
         });
     } else {
       console.log('token not found');
@@ -174,8 +187,8 @@ export class GestaoReservaComponent implements OnInit {
         } else {
           this.hospede = response;
           this.hospede.id = id;
-          console.log('hóspede:' + JSON.stringify(this.hospede));
-          console.log('Dados do hospede recuperado com sucesso!');
+          // console.log('hóspede:' + JSON.stringify(this.hospede));
+          // console.log('Dados do hospede recuperado com sucesso!');
         }
       })
       .catch((e) => {
@@ -204,8 +217,8 @@ export class GestaoReservaComponent implements OnInit {
         } else {
           this.acomodacao = response;
           this.acomodacao.id = id;
-          console.log('acomodação:' + JSON.stringify(this.acomodacao));
-          console.log('Dados da acomodação recuperados com sucesso!');
+          // console.log('acomodação:' + JSON.stringify(this.acomodacao));
+          // console.log('Dados da acomodação recuperados com sucesso!');
         }
       })
       .catch((e) => {
