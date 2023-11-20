@@ -71,10 +71,6 @@ export class GestaoReservaComponent implements OnInit {
 
   selectedId: number = 0;
 
-  editarBtn(id: number) {
-    this._router.navigate(['editar-reserva']);
-  }
-
   checkInBtn(id: number) {}
   checkOutBtn(id: number) {}
 
@@ -104,6 +100,14 @@ export class GestaoReservaComponent implements OnInit {
 
   selectedIdExcluirBtn(id: number) {
     this.selectedId = id;
+  }
+
+  editarBtn(id: number) {
+    console.log('click no botão editar reserva');
+    console.log(id);
+    this._router.navigate(['editar-reserva'], {
+      queryParams: { id: id },
+    });
   }
 
   goDashBoard() {
