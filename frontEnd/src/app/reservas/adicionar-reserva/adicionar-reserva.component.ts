@@ -22,6 +22,7 @@ export class AdicionarReservaComponent implements OnInit {
   acomodacao: string = '';
   valorDiaria: number = 0;
   quantidadePessoas: number = 0;
+  observacao: string = '';
 
   ajustaDataSaidaMin() {
     const elemento = document.getElementById('dataSaida');
@@ -52,7 +53,7 @@ export class AdicionarReservaComponent implements OnInit {
       let reserva = {
         acomodacaoId: this.selectedAcomodacaoId,
         hospedeId: this.selectedHospedeId,
-        usuarioId: 1,
+        usuarioId: 0,
         dataReserva: this.imprimeData(hoje),
         dataEntrada: this.dataEntrada.toString(),
         dataSaida: this.dataSaida.toString(),
@@ -62,7 +63,7 @@ export class AdicionarReservaComponent implements OnInit {
         valorDiaria: this.valorDiaria,
         valorPagoTotal: null,
         formaDePagamento: null,
-        observacao: 'observação',
+        observacao: this.observacao,
       };
       console.log(reserva);
       fetch('http://localhost:8080/reserva', {
