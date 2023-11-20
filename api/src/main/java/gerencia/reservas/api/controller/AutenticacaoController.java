@@ -42,6 +42,7 @@ public class AutenticacaoController {
 			var authentication = manager.authenticate(authenticationToken);
 			System.out.println("authentication: " + authentication);
 			var tokenJWT = tokenService.gerarToken((Usuario) authentication.getPrincipal());
+			
 			return ResponseEntity.ok(new DadosTokenJWT(tokenJWT));
 		} catch (Exception e) {
 			System.out.println("** ALGUMA COISA DEU ERRADO ** ");
