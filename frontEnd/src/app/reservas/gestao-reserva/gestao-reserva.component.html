@@ -32,11 +32,17 @@
                 <td class="col-xs-3">
                     <button type="button" class="btn btn-outline-secondary me-3"
                         style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
-                        (click)="selectedIdBtn(dado.id)" data-bs-toggle="modal"
+                        (click)="selectedIdExcluirBtn(dado.id)" data-bs-toggle="modal"
                         data-bs-target="#exampleModal">Excluir</button>
                     <button type="button" class="btn btn-outline-secondary me-3"
                         style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
                         (click)="editarBtn(dado.id)">Editar</button>
+                    <button type="button" class="btn btn-outline-secondary me-3"
+                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                        (click)="checkInBtn(dado.id)">Check-in</button>
+                    <button type="button" class="btn btn-outline-secondary me-3"
+                        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                        (click)="checkOutBtn(dado.id)">Check-out</button>
                 </td>
 
             </tr>

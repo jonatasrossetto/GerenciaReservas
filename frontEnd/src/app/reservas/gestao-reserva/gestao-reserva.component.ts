@@ -74,9 +74,35 @@ export class GestaoReservaComponent implements OnInit {
   editarBtn(id: number) {
     this._router.navigate(['editar-reserva']);
   }
-  deleteBtn(id: number) {}
 
-  selectedIdBtn(id: number) {
+  checkInBtn(id: number) {}
+  checkOutBtn(id: number) {}
+
+  deleteBtn(id: number) {
+    console.log('click no botão excluir reserva');
+    console.log(id);
+
+    fetch('http://localhost:8080/reserva/' + id, {
+      method: 'DELETE',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + sessionStorage.getItem('accessToken'),
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          return { error: response.status };
+        }
+        return response;
+      })
+      .then((response) => {
+        console.log(response);
+        this.ngOnInit();
+      });
+  }
+
+  selectedIdExcluirBtn(id: number) {
     this.selectedId = id;
   }
 
