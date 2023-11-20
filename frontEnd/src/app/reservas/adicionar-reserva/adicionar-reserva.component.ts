@@ -152,6 +152,7 @@ export class AdicionarReservaComponent implements OnInit {
       sessionStorage.clear();
       this._router.navigate(['login']);
     }
+
     if (accessToken !== null) {
       const authToken = 'Bearer ' + accessToken;
       fetch('http://localhost:8080/acomodacao', {
@@ -174,7 +175,7 @@ export class AdicionarReservaComponent implements OnInit {
           listaDeAcomodacoes = data; // update table view
           let select = document.getElementById('listaAcomodacoes');
           if (select != null) {
-            for (let i = 0; i < listaDeHospedes.length; i++) {
+            for (let i = 0; i < listaDeAcomodacoes.length; i++) {
               let option = document.createElement('option');
               option.value = listaDeAcomodacoes[i].id.toString();
               option.text =
