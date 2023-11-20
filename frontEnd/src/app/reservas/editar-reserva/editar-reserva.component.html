@@ -47,6 +47,11 @@
             aria-label="Valor da Diária" aria-describedby="basic-addon1" type="number">
     </div>
 
+    <div class="input-group mb-3">
+        <span class="input-group-text">Observações</span>
+        <textarea class="form-control" aria-label="observações" [(ngModel)]="reserva.observacao"></textarea>
+    </div>
+
     <button type="button" class="btn btn-primary me-3" (click)="atualizarReserva()">Atualizar</button>
     <button type=" button" class="btn btn-primary me-3" (click)="goGestaoReserva()">Cancelar</button>
 
