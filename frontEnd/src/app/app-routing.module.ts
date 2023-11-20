@@ -12,6 +12,8 @@ import { EditarAcomodacaoComponent } from './acomodacoes/editar-acomodacao/edita
 import { AdicionarAcomodacaoComponent } from './acomodacoes/adicionar-acomodacao/adicionar-acomodacao.component';
 import { AdicionarReservaComponent } from './reservas/adicionar-reserva/adicionar-reserva.component';
 import { EditarReservaComponent } from './reservas/editar-reserva/editar-reserva.component';
+import { ReservaCheckinComponent } from './reservas/reserva-checkin/reserva-checkin.component';
+import { ReservaCheckoutComponent } from './reservas/reserva-checkout/reserva-checkout.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -26,6 +28,8 @@ const routes: Routes = [
   { path: 'adicionar-acomodacao', component: AdicionarAcomodacaoComponent },
   { path: 'adicionar-reserva', component: AdicionarReservaComponent },
   { path: 'editar-reserva', component: EditarReservaComponent },
+  { path: 'reserva-checkin', component: ReservaCheckinComponent },
+  { path: 'reserva-checkout', component: ReservaCheckoutComponent },
 ];
 
 @NgModule({

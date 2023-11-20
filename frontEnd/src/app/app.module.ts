@@ -17,6 +17,8 @@ import { AdicionarAcomodacaoComponent } from './acomodacoes/adicionar-acomodacao
 import { EditarAcomodacaoComponent } from './acomodacoes/editar-acomodacao/editar-acomodacao.component';
 import { EditarReservaComponent } from './reservas/editar-reserva/editar-reserva.component';
 import { AdicionarReservaComponent } from './reservas/adicionar-reserva/adicionar-reserva.component';
+import { ReservaCheckinComponent } from './reservas/reserva-checkin/reserva-checkin.component';
+import { ReservaCheckoutComponent } from './reservas/reserva-checkout/reserva-checkout.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { AdicionarReservaComponent } from './reservas/adicionar-reserva/adiciona
     EditarAcomodacaoComponent,
     EditarReservaComponent,
     AdicionarReservaComponent,
+    ReservaCheckinComponent,
+    ReservaCheckoutComponent,
   ],
   imports: [
     BrowserModule,
