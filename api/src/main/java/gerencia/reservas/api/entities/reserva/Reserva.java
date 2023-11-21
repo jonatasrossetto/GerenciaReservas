@@ -185,6 +185,12 @@ public class Reserva {
 	public String getObservacao() {
 		return observacao;
 	}
+
+	public void setUsuarioId(Long usuarioId) {
+		this.usuarioId = usuarioId;
+	}
+	
+	
 	
 	
 	
