@@ -9,7 +9,17 @@
     <p class="text-center">Atualizar Data de Check-in</p>
 </div>
 
-<div class="container col-6">
+<div class="container col-7">
+    <div class="input-group mb-3">
+        <span class="input-group-text col-4" id="basic-addon1">Nome do Hóspede</span>
+        <input [(ngModel)]="nomeHospede" type="text" class="form-control" placeholder="Nome do Hóspede"
+            aria-label="Nome do Hóspede" aria-describedby="button-addon1" disabled>
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text col-4" id="basic-addon1">Acomodação</span>
+        <input [(ngModel)]="acomodacao" type="text" class="form-control" placeholder="Acomodação"
+            aria-label="Acomodação" aria-describedby="button-addon1" disabled>
+    </div>
     <div class="input-group mb-3 date">
         <span class="input-group-text col-4" id="basic-addon1">Data de Check-in</span>
         <input [(ngModel)]="reserva.dataHoraEntrada" class="form-control" placeholder="Data de Entrada"

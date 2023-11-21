@@ -95,7 +95,8 @@ export class ReservaCheckinComponent implements OnInit {
       this.id = params['id'];
       console.log(this.id);
     });
-
+    this.atualizaListaDeHospedes();
+    this.atualizarListaDeAcomodacoes();
     const accessToken = sessionStorage.getItem('accessToken');
     console.log('accessToken: ' + accessToken);
     if (accessToken !== null) {
@@ -150,6 +151,94 @@ export class ReservaCheckinComponent implements OnInit {
         ' cama, R$' +
         acomodacao.valorDiaria.toString() +
         '/diária.';
+    }
+  }
+
+  atualizaListaDeHospedes() {
+    const accessToken = sessionStorage.getItem('accessToken');
+    if (accessToken !== null) {
+      const authToken = 'Bearer ' + accessToken;
+      fetch('http://localhost:8080/hospede', {
+        method: 'GET',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: authToken,
+        },
+      })
+        .then((response) => {
+          if (!response.ok) {
+            console.log('token not authorized');
+            sessionStorage.clear();
+            this._router.navigate(['login']);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          this.listaDeHospedes = data;
+          let select = document.getElementById('listaHospedes');
+          if (select != null) {
+            for (let i = 0; i < this.listaDeHospedes.length; i++) {
+              let option = document.createElement('option');
+              option.value = this.listaDeHospedes[i].id.toString();
+              option.text = this.listaDeHospedes[i].nome;
+              select.appendChild(option);
+            }
+          }
+          return data;
+        });
+    } else {
+      console.log('token not found');
+      sessionStorage.clear();
+      this._router.navigate(['login']);
+    }
+  }
+  atualizarListaDeAcomodacoes() {
+    const accessToken = sessionStorage.getItem('accessToken');
+    if (accessToken !== null) {
+      const authToken = 'Bearer ' + accessToken;
+      fetch('http://localhost:8080/acomodacao', {
+        method: 'GET',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: authToken,
+        },
+      })
+        .then((response) => {
+          if (!response.ok) {
+            console.log('token not authorized');
+            sessionStorage.clear();
+            this._router.navigate(['login']);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          this.listaDeAcomodacoes = data; // update table view
+          let select = document.getElementById('listaAcomodacoes');
+          if (select != null) {
+            for (let i = 0; i < this.listaDeAcomodacoes.length; i++) {
+              let option = document.createElement('option');
+              option.value = this.listaDeAcomodacoes[i].id.toString();
+              option.text =
+                'Acomodação ' +
+                this.listaDeAcomodacoes[i].numero.toString() +
+                ' para ' +
+                this.listaDeAcomodacoes[i].capacidadePessoas.toString() +
+                ' hóspedes, ' +
+                this.listaDeAcomodacoes[i].quantidadeCamas.toString() +
+                ' cama, R$' +
+                this.listaDeAcomodacoes[i].valorDiaria.toString() +
+                '/diária.';
+              select.appendChild(option);
+            }
+          }
+          return data;
+        });
+    } else {
+      console.log('token not found');
+      sessionStorage.clear();
+      this._router.navigate(['login']);
     }
   }
 }
