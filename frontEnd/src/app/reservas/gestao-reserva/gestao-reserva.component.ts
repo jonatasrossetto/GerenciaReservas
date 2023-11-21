@@ -242,4 +242,14 @@ export class GestaoReservaComponent implements OnInit {
         console.log('Error:' + e);
       });
   }
+
+  imprimeData(data: any) {
+    if (data === null) {
+      return '';
+    }
+    var dia = data.substring(8, 10);
+    var mes = data.substring(5, 7);
+    var ano = data.substring(0, 4);
+    return dia + '/' + mes + '/' + ano;
+  }
 }

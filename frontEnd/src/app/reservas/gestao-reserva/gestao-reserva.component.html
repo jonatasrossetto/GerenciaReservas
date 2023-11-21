@@ -48,10 +48,10 @@
                 <td class="col-xs-3" (click)="recuperaDadosAcomodacao(dado.acomodacao.id)">{{dado.acomodacao.numero}}
                 </td>
                 <td class="col-xs-3" (click)="recuperaDadosHospede(dado.hospede.id)">{{dado.hospede.nome}}</td>
-                <td class="col-xs-3">{{dado.dataEntrada}}</td>
-                <td class="col-xs-3">{{dado.dataSaida}}</td>
-                <td class="col-xs-3">{{dado.dataHoraEntrada}}</td>
-                <td class="col-xs-3">{{dado.dataHoraSaida}}</td>
+                <td class="col-xs-3">{{imprimeData(dado.dataEntrada)}}</td>
+                <td class="col-xs-3">{{imprimeData(dado.dataSaida)}}</td>
+                <td class="col-xs-3">{{imprimeData(dado.dataHoraEntrada)}}</td>
+                <td class="col-xs-3">{{imprimeData(dado.dataHoraSaida)}}</td>
                 <td class="col-xs-3">
                     <button type="button" class="btn btn-outline-secondary me-3"
                         style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
