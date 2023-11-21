@@ -47,8 +47,13 @@ public class Reserva {
 	private LocalDate dataSaida;
 	
 	private Long quantidadePessoas;
-	private Timestamp dataHoraEntrada;
-	private Timestamp dataHoraSaida;
+	
+	@DateTimeFormat(iso = ISO.DATE)
+	private LocalDate dataHoraEntrada;
+	
+	@DateTimeFormat(iso = ISO.DATE)
+	private LocalDate dataHoraSaida;
+	
 	private BigDecimal valorDiaria;
 	private BigDecimal valorPagoTotal;
 	private String formaPagamento;
@@ -157,11 +162,11 @@ public class Reserva {
 		return quantidadePessoas;
 	}
 
-	public Timestamp getDataHoraEntrada() {
+	public LocalDate getDataHoraEntrada() {
 		return dataHoraEntrada;
 	}
 
-	public Timestamp getDataHoraSaida() {
+	public LocalDate getDataHoraSaida() {
 		return dataHoraSaida;
 	}
 

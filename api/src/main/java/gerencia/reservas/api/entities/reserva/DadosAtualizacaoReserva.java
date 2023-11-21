@@ -20,8 +20,10 @@ public record DadosAtualizacaoReserva(
 		 @DateTimeFormat(iso = ISO.DATE)
 		 LocalDate dataSaida,
 		 Long quantidadePessoas,
-		 Timestamp dataHoraEntrada,
-		 Timestamp dataHoraSaida,
+		 @DateTimeFormat(iso = ISO.DATE)
+		 LocalDate dataHoraEntrada,
+		 @DateTimeFormat(iso = ISO.DATE)
+		 LocalDate dataHoraSaida,
 		 BigDecimal valorDiaria,
 		 BigDecimal valorPagoTotal,
 		 String formaDePagamento,
