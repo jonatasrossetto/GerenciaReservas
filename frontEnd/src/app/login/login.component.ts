@@ -51,7 +51,7 @@ export class LoginComponent {
       });
   }
 
-  telaSignUp() {
+  goTelaSignUp() {
     this._router.navigate(['signup']);
   }
 }
