@@ -8,10 +8,20 @@
 </head>
 
 <body>
-    <h2>Dashboard</h2>
-    <button (click)="goGestaoHospedes()">Gerenciar Hóspedes</button><br><br>
-    <button (click)="goGestaoAcomodacao()">Gerenciar Acomodações</button><br><br>
-    <button (click)="goGestaoReserva()">Gerenciar Reservas</button><br><br>
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+            <p class="navbar-brand pe-auto" (click)="goDashBoard()" style="cursor: pointer;">
+                Gerencia Pousada
+            </p>
+            <button class="btn btn-sm btn-outline-secondary" type="button" (click)="goGestaoHospedes()">Gestão de
+                Hóspedes</button>
+            <button class="btn btn-sm btn-outline-secondary" type="button" (click)="goGestaoAcomodacao()">Gestão de
+                Acomodações</button>
+            <button class="btn btn-sm btn-outline-secondary" type="button" (click)="goGestaoReserva()">Gestão de
+                Reservas</button>
+        </div>
+    </nav>
+
 
 </body>
 

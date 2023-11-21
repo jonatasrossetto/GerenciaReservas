@@ -9,6 +9,10 @@ import { Router } from '@angular/router';
 export class DashboardComponent {
   constructor(private _router: Router) {}
 
+  goDashBoard() {
+    this._router.navigate(['dashboard']);
+  }
+
   goGestaoHospedes() {
     this._router.navigate(['gestao-hospedes']);
   }
