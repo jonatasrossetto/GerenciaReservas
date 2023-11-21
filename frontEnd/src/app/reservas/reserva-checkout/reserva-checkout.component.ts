@@ -38,11 +38,24 @@ export class ReservaCheckoutComponent implements OnInit {
     },
   ];
   listaDeHospedes = [{ id: 0, nome: 'nome' }];
-  goGestaoReserva() {
+  goDashBoard(event: Event) {
+    event.preventDefault();
+    this._router.navigate(['dashboard']);
+  }
+
+  goGestaoHospedes(event: Event) {
+    event.preventDefault();
+    this._router.navigate(['gestao-hospedes']);
+  }
+
+  goGestaoReserva(event: Event) {
+    event.preventDefault();
     this._router.navigate(['gestao-reserva']);
   }
-  goDashBoard() {
-    this._router.navigate(['dashboard']);
+
+  goGestaoAcomodacao(event: Event) {
+    event.preventDefault();
+    this._router.navigate(['gestao-acomodacao']);
   }
 
   atualizarReserva() {

@@ -1,14 +1,33 @@
-<nav class="navbar bg-body-tertiary">
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-        <p class="navbar-brand pe-auto" (click)="goDashBoard()" style="cursor: pointer;">
-            Gerencia Pousada
-        </p>
-        <button class="btn btn-sm btn-outline-secondary" type="button" (click)="goAdicionarReserva()">Adicionar
-            Reserva</button>
+        <a class="navbar-brand" href="#" (click)="goDashBoard($event)">Gerencia Pousada</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#"
+                        (click)="goGestaoAcomodacao($event)">Acomodações</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" (click)="goGestaoHospedes($event)">Hóspedes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" (click)="goGestaoReserva($event)">Reservas</a>
+                </li>
+
+            </ul>
+        </div>
     </div>
 </nav>
+<div class="container p-3 text-center">
+    <h5 class="text-center">Gestão de Reservas</h5>
+    <button class="btn btn-sm btn-outline-secondary" type="button" (click)="goAdicionarReserva()">Adicionar
+        Reserva</button>
+</div>
 
-<br>
 <div class="tableFixHead">
     <table class="table table-hover ">
         <thead>
@@ -18,6 +37,8 @@
                 <th class="col-xs-3">Hóspede</th>
                 <th class="col-xs-3">Entrada</th>
                 <th class="col-xs-3">Saída</th>
+                <th class="col-xs-3">Check-In</th>
+                <th class="col-xs-3">Check-Out</th>
                 <th class="col-xs-3">Ações</th>
             </tr>
         </thead>
@@ -29,6 +50,8 @@
                 <td class="col-xs-3" (click)="recuperaDadosHospede(dado.hospede.id)">{{dado.hospede.nome}}</td>
                 <td class="col-xs-3">{{dado.dataEntrada}}</td>
                 <td class="col-xs-3">{{dado.dataSaida}}</td>
+                <td class="col-xs-3">{{dado.dataHoraEntrada}}</td>
+                <td class="col-xs-3">{{dado.dataHoraSaida}}</td>
                 <td class="col-xs-3">
                     <button type="button" class="btn btn-outline-secondary me-3"
                         style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
@@ -55,7 +78,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        Deseja realmente excluir a acomodação Id: {{selectedId}}?
+                        Deseja realmente excluir a reserva Id: {{selectedId}}?
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
