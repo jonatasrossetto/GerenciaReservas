@@ -54,7 +54,7 @@ public class TokenService {
 		try {
 			var authorization = headers.getFirst(HttpHeaders.AUTHORIZATION).replace("Bearer ", "");
 			System.out.println("*jwt token: " + authorization);
-			var idUsuario = this.getId(authorization);
+			String idUsuario = this.getId(authorization);
 			return idUsuario;
 		} catch (JWTVerificationException exception) {
 			throw new RuntimeException("token JWT inválido ou expirado", exception);
