@@ -115,6 +115,10 @@ public class Hospede {
 		}
 		
 	}
+
+	public void setUsuarioId(Long usuarioId) {
+		this.usuarioId = usuarioId;
+	}
 	
 	
 	
