@@ -1,1 +1,47 @@
-<p>reserva-checkout works!</p>
+<nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+        <p class="navbar-brand pe-auto" (click)="goDashBoard()" style="cursor: pointer;">
+            Gerencia Pousada
+        </p>
+    </div>
+</nav>
+<div class="container">
+    <p class="text-center">Atualizar Dados de Check-out</p>
+</div>
+
+<div class="container col-7">
+    <div class="input-group mb-3">
+        <span class="input-group-text col-4" id="basic-addon1">Nome do Hóspede</span>
+        <input [(ngModel)]="nomeHospede" type="text" class="form-control" placeholder="Nome do Hóspede"
+            aria-label="Nome do Hóspede" aria-describedby="button-addon1" disabled>
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text col-4" id="basic-addon1">Acomodação</span>
+        <input [(ngModel)]="acomodacao" type="text" class="form-control" placeholder="Acomodação"
+            aria-label="Acomodação" aria-describedby="button-addon1" disabled>
+    </div>
+    <div class="input-group mb-3 date">
+        <span class="input-group-text col-4" id="basic-addon1">Data de Check-out</span>
+        <input [(ngModel)]="reserva.dataHoraSaida" class="form-control" placeholder="Data de Entrada"
+            aria-label="Data de Entrada" aria-describedby="basic-addon1" type="date"
+            min="{{reserva.dataEntrada| date:'yyyy-MM-dd'}}" max="{{reserva.dataSaida|date:'yyyy-MM-dd'}}">
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text col-4" id="basic-addon1">Forma de Pagamento</span>
+        <input [(ngModel)]="reserva.formaDePagamento" class="form-control" placeholder="Forma de formaDePagamento"
+            aria-label="Nome completo" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text col-4" id="basic-addon1">Valor Total R$</span>
+        <input [(ngModel)]="reserva.valorPagoTotal" class="form-control" placeholder="valor total R$"
+            aria-label="Nome completo" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text">Observações</span>
+        <textarea class="form-control" aria-label="observações" style="height: 200px;"
+            [(ngModel)]="reserva.observacao"></textarea>
+    </div>
+
+    <button type="button" class="btn btn-primary me-3" (click)="atualizarReserva()">Atualizar</button>
+    <button type=" button" class="btn btn-primary me-3" (click)="goGestaoReserva()">Cancelar</button>
+</div>
