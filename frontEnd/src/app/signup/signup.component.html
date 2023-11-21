@@ -8,19 +8,31 @@
 </head>
 
 <body>
-    <h1>Registre um novo usuário</h1>
-    <br>
-    <form>
-        <div>
-            <label for="newUserEmail">Email</label><br>
-            <input type="email" name="newUserEmail" [(ngModel)]="newUserEmail"><br><br>
-            <label for="newUserPassword">Senha</label><br>
-            <input type="password" name="newUserPassword" [(ngModel)]="newUserPassword"><br><br>
-            <label for="newUserPasswordConfirmation">Confirme a Senha</label><br>
-            <input type="password" name="newUserPasswordConfirmation" [(ngModel)]="newUserPasswordConfirmation"><br><br>
+    <div class="container mb-3">
+        <h2 class="text-center">Registre um novo usuário</h2>
+    </div>
+
+    <div class="container col-6">
+        <div class="input-group mb-3">
+            <span class="input-group-text col-3" id="basic-addon1">Email</span>
+            <input [(ngModel)]="newUserEmail" class="form-control" placeholder="email@email.com" aria-label="Email"
+                aria-describedby="basic-addon1">
         </div>
-        <button id="Entrar" (click)="clickme()">Entrar</button>
-    </form>
+        <div class="input-group mb-3">
+            <span class="input-group-text col-3" id="basic-addon1">Senha</span>
+            <input [(ngModel)]="newUserPassword" class="form-control" placeholder="Senha" aria-label="Senha"
+                aria-describedby="basic-addon1" type="password">
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text col-3" id="basic-addon1">Confirme a Senha</span>
+            <input [(ngModel)]="newUserPasswordConfirmation" class="form-control" placeholder="Confirmação da senha"
+                aria-label="Confirmação da Senha" aria-describedby="basic-addon1" type="password">
+        </div>
+        <button type="button" class="btn btn-outline-secondary me-3" (click)="clickme()">Cadastrar</button>
+
+
+    </div>
+
 </body>
 
 </html>
