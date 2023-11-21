@@ -9,7 +9,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ReservaCheckinComponent implements OnInit {
   constructor(private _router: Router, private route: ActivatedRoute) {}
   id: number = 0; // id da reserva que será editada
-  dataCheckIn: Date = new Date();
   reserva = {
     acomodacaoId: 0,
     hospedeId: 0,
@@ -119,16 +118,11 @@ export class ReservaCheckinComponent implements OnInit {
         })
         .then((data) => {
           this.reserva = data; // update table view
-          if (this.reserva && this.reserva.dataHoraEntrada != null) {
-            // this.dataCheckIn = new Date(
-            //   String(this.reserva.dataHoraEntrada).slice(0, 10)
-            // );
-            console.log(this.dataCheckIn);
-            this.selectedHospedeId = this.reserva.hospedeId;
-            this.selectedAcomodacaoId = this.reserva.acomodacaoId;
-            this.atualizaNomeHospede(this.reserva.hospedeId);
-            this.atualizaTextoAcomodacao(this.reserva.acomodacaoId);
-          }
+          console.log(this.reserva.dataHoraEntrada);
+          this.selectedHospedeId = this.reserva.hospedeId;
+          this.selectedAcomodacaoId = this.reserva.acomodacaoId;
+          this.atualizaNomeHospede(this.reserva.hospedeId);
+          this.atualizaTextoAcomodacao(this.reserva.acomodacaoId);
         });
     } else {
       console.log('token not found');

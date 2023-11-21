@@ -14,7 +14,7 @@
         <span class="input-group-text col-4" id="basic-addon1">Data de Check-in</span>
         <input [(ngModel)]="reserva.dataHoraEntrada" class="form-control" placeholder="Data de Entrada"
             aria-label="Data de Entrada" aria-describedby="basic-addon1" type="date"
-            min="{{dataCheckIn| date:'yyyy-MM-dd'}}">
+            min="{{reserva.dataEntrada| date:'yyyy-MM-dd'}}" max="{{reserva.dataSaida|date:'yyyy-MM-dd'}}">
     </div>
     <div class="input-group mb-3">
         <span class="input-group-text">Observações</span>
