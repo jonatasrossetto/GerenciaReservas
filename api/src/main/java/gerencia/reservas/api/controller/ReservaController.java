@@ -6,6 +6,7 @@ import java.util.Optional;
 import java.util.TimeZone;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -28,6 +30,7 @@ import gerencia.reservas.api.entities.reserva.DadosDetalhamentoReserva;
 import gerencia.reservas.api.entities.reserva.DadosListagemReserva;
 import gerencia.reservas.api.entities.reserva.Reserva;
 import gerencia.reservas.api.entities.reserva.ReservaRepository;
+import gerencia.reservas.api.infra.security.TokenService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 
@@ -46,6 +49,9 @@ public class ReservaController {
 	
 	@Autowired
 	private ReservaService reservaService;
+	
+	@Autowired
+	TokenService tokenService;
 
 	@GetMapping("/hello")
 	public String HelloWorld() {
@@ -69,15 +75,17 @@ public class ReservaController {
 
 	@PostMapping
 	@Transactional
-	public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroReserva dados, UriComponentsBuilder uriBuilder) {
-		
+	public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroReserva dados, UriComponentsBuilder uriBuilder, @RequestHeader HttpHeaders headers) {
 		System.out.println("** CADASTRAR RESERVA ** ");
+		String idUsuario = tokenService.getIdUsuarioHeader(headers);
+		System.out.println("Id_usuario: "+ idUsuario);
 		var conflito = reservaService.verificaConflitoDeData(dados);
 		if (conflito!=null) {
 			return conflito;
 		}
 		
 		var reserva = new Reserva(dados);
+		reserva.setUsuarioId(Long.parseLong(idUsuario));
 		repository.save(reserva);
 		System.out.println("id reserva cadastrado:" + reserva.getId());
 		var uri = uriBuilder.path("/reserva/{id}").buildAndExpand(reserva.getId()).toUri();
@@ -118,16 +126,22 @@ public class ReservaController {
 
 	@PutMapping
 	@Transactional
-	public ResponseEntity atualizar(@RequestBody @Valid DadosAtualizacaoReserva dados) {
+	public ResponseEntity atualizar(@RequestBody @Valid DadosAtualizacaoReserva dados, @RequestHeader HttpHeaders headers) {
 		System.out.println("** ATUALIZAR RESERVA ** ");
-		
+		String idUsuario = tokenService.getIdUsuarioHeader(headers);
+		System.out.println("Id_usuario: "+ idUsuario);
 
 		if (!repository.existsById(dados.id())) {
 			return ResponseEntity.badRequest().body("Id de reserva inexistente");
 		}
 
 		var reserva = repository.getReferenceById(dados.id());
-
+		var conflito = reservaService.verificaConflitoNaReserva(dados.dataEntrada(),dados.dataSaida(),dados.hospedeId(),dados.acomodacaoId(),dados.quantidadePessoas());
+		if (conflito!=null) {
+			return conflito;
+		}
+		
+		reserva.setUsuarioId(Long.parseLong(idUsuario));
 		reserva.atualizarInformacoes(dados);
 
 		return ResponseEntity.ok(new DadosDetalhamentoReserva(reserva));
