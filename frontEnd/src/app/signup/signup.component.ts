@@ -37,6 +37,7 @@ export class SignupComponent {
       .then((response) => {
         if (!response.ok) {
           return { error: response.status };
+          alert(response);
         }
         return response.json();
       })
