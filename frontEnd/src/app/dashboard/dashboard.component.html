@@ -2,12 +2,33 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
 </head>
 
 <body>
+  <nav class="navbar bg-body-tertiary ">
+    <div class="container-fluid">
+      <img src="../../assets/logo.webp" class="m-3">
+      <p class="navbar-brand" (click)="goDashBoard()" style="cursor: pointer;">
+        Gerencia Pousada
+      </p>
+      <button class="btn btn-md btn-outline-secondary" type="button" (click)="goGestaoHospedes()">Gestão de
+        Hóspedes</button>
+      <button class="btn btn-md btn-outline-secondary" type="button" (click)="goGestaoAcomodacao()">Gestão de
+        Acomodações</button>
+      <button class="btn btn-md btn-outline-secondary" type="button" (click)="goGestaoReserva()">Gestão de
+        Reservas</button>
+    </div>
+  </nav>
+  <div class="row row-cols-1">
+    <div class="col">
+      <div class="card text-bg-info">
+        <img src="../../assets/ypua.jpg" alt="" class="card-img-top vh-50 " />
+      </div>
+    </div>
+  </div>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#" (click)="goDashBoard($event)">Gerencia Pousada</a>
@@ -36,6 +57,7 @@
         <h3 class="text-center">DashBoard</h3>
 
     </div>
+
 
 </body>
 

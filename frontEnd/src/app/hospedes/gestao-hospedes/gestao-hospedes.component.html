@@ -1,5 +1,13 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
+
+      <img src="../../assets/logo.webp" class="m-3">
+        <p class="navbar-brand" (click)="goDashBoard()" style="cursor: pointer;">
+            Gerencia Pousada
+        </p>
+        <button class="btn btn-md btn-outline-secondary" type="button" (click)="goAdicionarHospede()">Adicionar
+            Hóspede</button>
+
         <a class="navbar-brand" href="#" (click)="goDashBoard($event)">Gerencia Pousada</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,6 +28,7 @@
 
             </ul>
         </div>
+
     </div>
 </nav>
 <div class="container p-3 text-center">

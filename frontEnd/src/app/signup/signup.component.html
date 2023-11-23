@@ -2,36 +2,44 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <title>Gerência Reservas</title>
+  <title>Document</title>
 </head>
 
 <body>
-    <div class="container mb-3">
-        <h2 class="text-center">Registre um novo usuário</h2>
+  <nav class="navbar-brand d-flex justify-content-center mb-5">
+    <img src="../../assets/logo.webp">
+  </nav>
+  <div class="container mb-3">
+    <h2 class="text-center">Registre um novo usuário</h2>
+  </div>
+
+  <div class="container col-6 vh-100">
+    <div class="input-group mb-3">
+      <span class="input-group-text col-3" id="basic-addon1">Email</span>
+      <input [(ngModel)]="newUserEmail" class="form-control" placeholder="email@email.com" aria-label="Email"
+        aria-describedby="basic-addon1">
     </div>
-
-    <div class="container col-6">
-        <div class="input-group mb-3">
-            <span class="input-group-text col-3" id="basic-addon1">Email</span>
-            <input [(ngModel)]="newUserEmail" class="form-control" placeholder="email@email.com" aria-label="Email"
-                aria-describedby="basic-addon1">
-        </div>
-        <div class="input-group mb-3">
-            <span class="input-group-text col-3" id="basic-addon1">Senha</span>
-            <input [(ngModel)]="newUserPassword" class="form-control" placeholder="Senha" aria-label="Senha"
-                aria-describedby="basic-addon1" type="password">
-        </div>
-        <div class="input-group mb-3">
-            <span class="input-group-text col-3" id="basic-addon1">Confirme a Senha</span>
-            <input [(ngModel)]="newUserPasswordConfirmation" class="form-control" placeholder="Confirmação da senha"
-                aria-label="Confirmação da Senha" aria-describedby="basic-addon1" type="password">
-        </div>
-        <button type="button" class="btn btn-outline-secondary me-3" (click)="clickme()">Cadastrar</button>
-
-
+    <div class="input-group mb-3">
+      <span class="input-group-text col-3" id="basic-addon1">Senha</span>
+      <input [(ngModel)]="newUserPassword" class="form-control" placeholder="Senha" aria-label="Senha"
+        aria-describedby="basic-addon1" type="password">
     </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text col-3" id="basic-addon1">Confirme a Senha</span>
+      <input [(ngModel)]="newUserPasswordConfirmation" class="form-control" placeholder="Confirmação da senha"
+        aria-label="Confirmação da Senha" aria-describedby="basic-addon1" type="password">
+    </div>
+    <button type="button" class="btn btn-outline-secondary me-3" (click)="clickme()">Cadastrar</button>
+
+
+  </div>
 
 </body>
 
