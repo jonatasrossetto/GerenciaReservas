@@ -23,12 +23,24 @@ export class EditarHospedeComponent implements OnInit {
 
   constructor(private _router: Router, private route: ActivatedRoute) {}
 
-  goDashBoard() {
+  goDashBoard(event: Event) {
+    event.preventDefault();
     this._router.navigate(['dashboard']);
   }
 
-  goGestaoHospedes() {
+  goGestaoHospedes(event: Event) {
+    event.preventDefault();
     this._router.navigate(['gestao-hospedes']);
+  }
+
+  goGestaoReserva(event: Event) {
+    event.preventDefault();
+    this._router.navigate(['gestao-reserva']);
+  }
+
+  goGestaoAcomodacao(event: Event) {
+    event.preventDefault();
+    this._router.navigate(['gestao-acomodacao']);
   }
 
   atualizarHospede() {
@@ -56,7 +68,7 @@ export class EditarHospedeComponent implements OnInit {
           return;
         } else {
           console.log('Hospede atualizado com sucesso!');
-          this.goGestaoHospedes();
+          this._router.navigate(['gestao-hospedes']);
         }
       })
       .catch((e) => {

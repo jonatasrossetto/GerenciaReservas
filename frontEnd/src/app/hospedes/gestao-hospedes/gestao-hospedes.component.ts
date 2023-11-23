@@ -33,8 +33,24 @@ export class GestaoHospedesComponent implements OnInit {
     this.selectedId = id;
   }
 
-  goDashBoard() {
+  goDashBoard(event: Event) {
+    event.preventDefault();
     this._router.navigate(['dashboard']);
+  }
+
+  goGestaoHospedes(event: Event) {
+    event.preventDefault();
+    this._router.navigate(['gestao-hospedes']);
+  }
+
+  goGestaoReserva(event: Event) {
+    event.preventDefault();
+    this._router.navigate(['gestao-reserva']);
+  }
+
+  goGestaoAcomodacao(event: Event) {
+    event.preventDefault();
+    this._router.navigate(['gestao-acomodacao']);
   }
 
   goAdicionarHospede() {

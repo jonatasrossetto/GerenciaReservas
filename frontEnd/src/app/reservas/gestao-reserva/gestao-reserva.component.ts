@@ -123,9 +123,26 @@ export class GestaoReservaComponent implements OnInit {
     });
   }
 
-  goDashBoard() {
+  goDashBoard(event: Event) {
+    event.preventDefault();
     this._router.navigate(['dashboard']);
   }
+
+  goGestaoHospedes(event: Event) {
+    event.preventDefault();
+    this._router.navigate(['gestao-hospedes']);
+  }
+
+  goGestaoReserva(event: Event) {
+    event.preventDefault();
+    this._router.navigate(['gestao-reserva']);
+  }
+
+  goGestaoAcomodacao(event: Event) {
+    event.preventDefault();
+    this._router.navigate(['gestao-acomodacao']);
+  }
+
   goAdicionarReserva() {
     console.log('goAdicionarReserva');
     this._router.navigate(['adicionar-reserva']);
@@ -224,5 +241,15 @@ export class GestaoReservaComponent implements OnInit {
       .catch((e) => {
         console.log('Error:' + e);
       });
+  }
+
+  imprimeData(data: any) {
+    if (data === null) {
+      return '';
+    }
+    var dia = data.substring(8, 10);
+    var mes = data.substring(5, 7);
+    var ano = data.substring(0, 4);
+    return dia + '/' + mes + '/' + ano;
   }
 }

@@ -9,19 +9,23 @@ import { Router } from '@angular/router';
 export class DashboardComponent {
   constructor(private _router: Router) {}
 
-  goDashBoard() {
+  goDashBoard(event: Event) {
+    event.preventDefault();
     this._router.navigate(['dashboard']);
   }
 
-  goGestaoHospedes() {
+  goGestaoHospedes(event: Event) {
+    event.preventDefault();
     this._router.navigate(['gestao-hospedes']);
   }
 
-  goGestaoReserva() {
+  goGestaoReserva(event: Event) {
+    event.preventDefault();
     this._router.navigate(['gestao-reserva']);
   }
 
-  goGestaoAcomodacao() {
+  goGestaoAcomodacao(event: Event) {
+    event.preventDefault();
     this._router.navigate(['gestao-acomodacao']);
   }
 }

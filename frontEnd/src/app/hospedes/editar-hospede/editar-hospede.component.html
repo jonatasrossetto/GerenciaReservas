@@ -1,12 +1,29 @@
-<nav class="navbar bg-body-tertiary">
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-        <p class="navbar-brand" (click)="goDashBoard()" style="cursor: pointer;">
-            Gerencia Pousada
-        </p>
+        <a class="navbar-brand" href="#" (click)="goDashBoard($event)">Gerencia Pousada</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#"
+                        (click)="goGestaoAcomodacao($event)">Acomodações</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" (click)="goGestaoHospedes($event)">Hóspedes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" (click)="goGestaoReserva($event)">Reservas</a>
+                </li>
+
+            </ul>
+        </div>
     </div>
 </nav>
-<div class="container">
-    <p class="text-center">Editar Hóspede</p>
+<div class="container p-3">
+    <h5 class="text-center">Editar Hóspede</h5>
 </div>
 <div class="container vh-100">
     <div class="input-group mb-3">
@@ -50,7 +67,7 @@
             aria-label="Username" aria-describedby="basic-addon1" value="hospede.dataNascimento">
     </div>
     <button type="button" class="btn btn-primary me-3" (click)="atualizarHospede()">Atualizar</button>
-    <button type="button" class="btn btn-primary me-3" (click)="goGestaoHospedes()">Cancelar</button>
+    <button type="button" class="btn btn-primary me-3" (click)="goGestaoHospedes($event)">Cancelar</button>
 
 
 </div>

@@ -56,10 +56,23 @@ export class AdicionarAcomodacaoComponent {
       });
   }
 
-  goDashBoard() {
+  goDashBoard(event: Event) {
+    event.preventDefault();
     this._router.navigate(['dashboard']);
   }
-  goGestaoAcomodacao() {
+
+  goGestaoHospedes(event: Event) {
+    event.preventDefault();
+    this._router.navigate(['gestao-hospedes']);
+  }
+
+  goGestaoReserva(event: Event) {
+    event.preventDefault();
+    this._router.navigate(['gestao-reserva']);
+  }
+
+  goGestaoAcomodacao(event: Event) {
+    event.preventDefault();
     this._router.navigate(['gestao-acomodacao']);
   }
 }

@@ -31,12 +31,24 @@ export class AdicionarReservaComponent implements OnInit {
     }
   }
 
-  goDashBoard() {
+  goDashBoard(event: Event) {
+    event.preventDefault();
     this._router.navigate(['dashboard']);
   }
 
-  goGestaoReserva() {
+  goGestaoHospedes(event: Event) {
+    event.preventDefault();
+    this._router.navigate(['gestao-hospedes']);
+  }
+
+  goGestaoReserva(event: Event) {
+    event.preventDefault();
     this._router.navigate(['gestao-reserva']);
+  }
+
+  goGestaoAcomodacao(event: Event) {
+    event.preventDefault();
+    this._router.navigate(['gestao-acomodacao']);
   }
 
   cadastrarReserva() {
@@ -80,7 +92,7 @@ export class AdicionarReservaComponent implements OnInit {
         })
         .then((response) => {
           if (response.error) {
-            console.log('Error: ' + response.error);
+            alert('Error: ' + response.error);
             return;
           } else {
             console.log('Success: ' + response);
@@ -89,7 +101,7 @@ export class AdicionarReservaComponent implements OnInit {
           }
         })
         .catch((e) => {
-          console.log('Error:' + e);
+          alert('Error: ' + e);
         });
     } else {
       alert('Preencha todos os campos!');
