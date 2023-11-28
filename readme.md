@@ -1,4 +1,4 @@
-## UNISENAI <br>
+## UNISENAI - Análise e Desenvolvimento de Sistemas<br>
 
 ## PROJETO APLICADO 2 - 2023-2<br>
 
