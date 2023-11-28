@@ -5,7 +5,7 @@
 - Evando dos Reis Ferreira Alves
 - Gabriel Oliveira da Silva
 - Jônatas Fred Rossetto
-- Lucas José de Paul
+- Lucas José de Paula
 
 # Aplicativo Web para gerenciar as reservas de uma pousada <br>
 
