@@ -7,6 +7,7 @@ import java.util.Optional;
 import java.util.TimeZone;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -111,7 +112,7 @@ public class ReservaController {
 		System.out.println("** LISTAR RESERVAS ** ");
 		LocalDate dataHoje = LocalDate.now().minusDays(1); 
 		System.out.println(dataHoje);
-		var page = repository.findByDataEntradaAfter(dataHoje);
+		var page = repository.findByDataEntradaAfter(dataHoje, Sort.by(Sort.Direction.ASC,"dataEntrada"));
 		List<DadosListagemReserva> lista = new ArrayList<DadosListagemReserva>();
 		for(Reserva reserva: page) {
 			Optional<Hospede> hospede = hospedeRepository.findById(reserva.getHospedeId());
