@@ -113,6 +113,9 @@ export class AdicionarReservaComponent implements OnInit {
     let month = data.getUTCMonth() + 1;
     let year = data.getUTCFullYear();
     console.log(`${year}-${month}-${day}`);
+    if (day < 10) {
+      return `${year}-${month}-0${day}`;
+    }
     return `${year}-${month}-${day}`;
   }
 

@@ -153,7 +153,7 @@ export class GestaoReservaComponent implements OnInit {
     // console.log('accessToken: ' + accessToken);
     if (accessToken !== null) {
       const authToken = 'Bearer ' + accessToken;
-      fetch('http://localhost:8080/reserva', {
+      fetch('http://localhost:8080/reserva/entradaFutura', {
         method: 'GET',
         mode: 'cors',
         headers: {
