@@ -1,5 +1,6 @@
 package gerencia.reservas.api.controller;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -96,6 +97,21 @@ public class ReservaController {
 	public ResponseEntity listar() {
 		System.out.println("** LISTAR RESERVAS ** ");
 		var page = repository.findAll();
+		List<DadosListagemReserva> lista = new ArrayList<DadosListagemReserva>();
+		for(Reserva reserva: page) {
+			Optional<Hospede> hospede = hospedeRepository.findById(reserva.getHospedeId());
+			Optional<Acomodacao> acomodacao = acomodacaoRepository.findById(reserva.getAcomodacaoId());
+			lista.add(new DadosListagemReserva(reserva,acomodacao,hospede,"usuário"));
+		}
+		return ResponseEntity.ok(lista);
+	}
+	
+	@GetMapping("/entradaFutura")
+	public ResponseEntity listarEntradaFutura() {
+		System.out.println("** LISTAR RESERVAS ** ");
+		LocalDate dataHoje = LocalDate.now().minusDays(1); 
+		System.out.println(dataHoje);
+		var page = repository.findByDataEntradaAfter(dataHoje);
 		List<DadosListagemReserva> lista = new ArrayList<DadosListagemReserva>();
 		for(Reserva reserva: page) {
 			Optional<Hospede> hospede = hospedeRepository.findById(reserva.getHospedeId());
