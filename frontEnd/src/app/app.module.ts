@@ -19,6 +19,7 @@ import { EditarReservaComponent } from './reservas/editar-reserva/editar-reserva
 import { AdicionarReservaComponent } from './reservas/adicionar-reserva/adicionar-reserva.component';
 import { ReservaCheckinComponent } from './reservas/reserva-checkin/reserva-checkin.component';
 import { ReservaCheckoutComponent } from './reservas/reserva-checkout/reserva-checkout.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { ReservaCheckoutComponent } from './reservas/reserva-checkout/reserva-ch
     AdicionarReservaComponent,
     ReservaCheckinComponent,
     ReservaCheckoutComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
