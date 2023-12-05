@@ -67,6 +67,15 @@ Baixar ou clonar este repositório.
 - Selecionar Signup para registrar um novo usuário
 - Fazer login, com os dados cadastrados, para utilizar o sistema
 
+### Swagger - Ambiente de Desenvolvimento
+
+- http://localhost:8080/swagger-ui/index.html#/
+- http://localhost:8080/v3/api-docs
+
+### Esquema do Postman para teste dos endpoints
+
+- https://github.com/jonatasrossetto/GerenciaReservas/blob/main/Gerencia_Reservas_API.postman_collection_21-10-2023.json
+
 ## Telas
 
 Login
