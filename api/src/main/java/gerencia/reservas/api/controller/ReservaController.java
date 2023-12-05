@@ -136,7 +136,12 @@ public class ReservaController {
 		}
 
 		var reserva = repository.getReferenceById(dados.id());
-		var conflito = reservaService.verificaConflitoNaReserva(dados.dataEntrada(),dados.dataSaida(),dados.hospedeId(),dados.acomodacaoId(),dados.quantidadePessoas());
+		var conflito = reservaService.verificaConflitoNaReserva(dados.dataEntrada(),
+																dados.dataSaida(),
+																dados.hospedeId(),
+																dados.acomodacaoId(),
+																dados.quantidadePessoas(),
+																dados.id());
 		if (conflito!=null) {
 			return conflito;
 		}

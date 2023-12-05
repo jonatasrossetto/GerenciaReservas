@@ -68,7 +68,7 @@ public class ReservaService {
 	}
 
 	public ResponseEntity verificaConflitoNaReserva(LocalDate dataEntrada, LocalDate dataSaida, Long hospedId,
-			Long acomodacaoId, Long quantidadePessoas) {
+			Long acomodacaoId, Long quantidadePessoas, Long reservaId) {
 		System.out.println("entrada: " + dataEntrada);
 		System.out.println("saida: " + dataSaida);
 		if (dataEntrada.equals(dataSaida)) {
@@ -90,21 +90,24 @@ public class ReservaService {
 
 		var listaReservas = repository.findByAcomodacaoId(acomodacaoId);
 		for (Reserva elemento : listaReservas) {
-			var conflitoDataEntrada = (dataEntrada.isAfter(elemento.getDataEntrada())
-					&& dataEntrada.isBefore(elemento.getDataSaída())) || dataEntrada.equals(elemento.getDataEntrada());
-			var conflitoDataSaida = (dataSaida.isAfter(elemento.getDataEntrada())
-					&& dataSaida.isBefore(elemento.getDataSaída())) || dataSaida.isEqual(elemento.getDataSaída());
-			var conflitoInterno = (dataEntrada.isBefore(elemento.getDataEntrada())
-					&& dataSaida.isAfter(elemento.getDataSaída()));
-			System.out.println("id: " + elemento.getId() + " entrada: " + elemento.getDataEntrada() + " saída: "
-					+ elemento.getDataSaída() + " conflito entrada: " + conflitoDataEntrada + " conflito saída: "
-					+ conflitoDataSaida + " conflito interno: " + conflitoInterno);
-			if (conflitoDataEntrada || conflitoDataSaida || conflitoInterno) {
-				var texto = "A acomodação já possui uma reserva dentro do período informado. Conflito entrada:"
-						+ conflitoDataEntrada + " conflito saída: " + conflitoDataSaida + " conflito interno: "
-						+ conflitoInterno;
-				return ResponseEntity.badRequest().body("{\"error\":\"" + texto + "\"}");
+			if (elemento.getId()!=reservaId) {
+				var conflitoDataEntrada = (dataEntrada.isAfter(elemento.getDataEntrada())
+						&& dataEntrada.isBefore(elemento.getDataSaída())) || dataEntrada.equals(elemento.getDataEntrada());
+				var conflitoDataSaida = (dataSaida.isAfter(elemento.getDataEntrada())
+						&& dataSaida.isBefore(elemento.getDataSaída())) || dataSaida.isEqual(elemento.getDataSaída());
+				var conflitoInterno = (dataEntrada.isBefore(elemento.getDataEntrada())
+						&& dataSaida.isAfter(elemento.getDataSaída()));
+				System.out.println("id: " + elemento.getId() + " entrada: " + elemento.getDataEntrada() + " saída: "
+						+ elemento.getDataSaída() + " conflito entrada: " + conflitoDataEntrada + " conflito saída: "
+						+ conflitoDataSaida + " conflito interno: " + conflitoInterno);
+				if (conflitoDataEntrada || conflitoDataSaida || conflitoInterno) {
+					var texto = "A acomodação já possui uma reserva dentro do período informado. Conflito entrada:"
+							+ conflitoDataEntrada + " conflito saída: " + conflitoDataSaida + " conflito interno: "
+							+ conflitoInterno;
+					return ResponseEntity.badRequest().body("{\"error\":\"" + texto + "\"}");
+				}	
 			}
+			
 		}
 		return null;
 	}
