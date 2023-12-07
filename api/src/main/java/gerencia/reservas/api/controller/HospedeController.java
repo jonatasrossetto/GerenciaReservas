@@ -29,6 +29,12 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 
+/**
+ * Classe de controllers para a tabela de Hospede
+ *
+ * @author Jonatas Rossetto
+ * @since 1.0
+ */
 @RestController
 @RequestMapping("/hospede")
 @Tag(name = "Hospede Controller", description = "Operações com a tabela de hóspedes")
@@ -48,6 +54,15 @@ public class HospedeController {
 		return "O endpoint /hospede está funcionando";
 	}
 	
+	/**
+	 * Responde com os dados do hospede referente ao {id} informado
+	 * GET request endpoint: \hospede\{id}
+	 *
+	 * @param pattern  The pattern for the string format.
+	 * @return JSON com esquema definido pela classe Hospede.
+	 * @throws java.lang.IllegalArgumentException If the pattern is incompatible with the given argument.
+	 * @since 1.1
+	 */
 	@Operation(summary = "Retorna os dados do hospede com o id informado")
 	@ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "New Employee added"),
