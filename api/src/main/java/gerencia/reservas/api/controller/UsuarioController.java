@@ -22,6 +22,12 @@ import gerencia.reservas.api.entities.usuario.UsuarioRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 
+/**
+ * Classe de controllers para atuar na tabela de usuarios
+ *
+ * @author Jonatas Rossetto
+ * @since 1.0
+ */
 @RestController
 @RequestMapping("/usuarios")
 public class UsuarioController {

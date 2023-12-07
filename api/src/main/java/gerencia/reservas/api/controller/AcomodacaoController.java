@@ -21,7 +21,12 @@ import gerencia.reservas.api.entities.acomodacao.DadosDetalhamentoAcomodacao;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 
-
+/**
+ * Classe de controllers para atuar na tabela de Acomodacoes
+ *
+ * @author Jonatas Rossetto
+ * @since 1.0
+ */
 @RestController
 @RequestMapping("/acomodacao")
 public class AcomodacaoController {

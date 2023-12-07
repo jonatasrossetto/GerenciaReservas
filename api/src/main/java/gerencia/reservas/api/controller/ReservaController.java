@@ -35,7 +35,12 @@ import gerencia.reservas.api.entities.reserva.ReservaRepository;
 import gerencia.reservas.api.infra.security.TokenService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
-
+/**
+ * Classe de controllers para atuar na tabela de Reservas
+ *
+ * @author Jonatas Rossetto
+ * @since 1.0
+ */
 @RestController
 @RequestMapping("/reserva")
 public class ReservaController {

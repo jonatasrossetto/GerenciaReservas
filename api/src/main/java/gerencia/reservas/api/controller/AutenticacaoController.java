@@ -17,7 +17,12 @@ import gerencia.reservas.api.infra.security.TokenService;
 import gerencia.reservas.api.infra.security.DadosTokenJWT;
 import jakarta.validation.Valid;
 
-
+/**
+ * Classe de controllers para autenticação de usuarios
+ *
+ * @author Jonatas Rossetto
+ * @since 1.0
+ */
 @RestController
 @RequestMapping("/login")
 public class AutenticacaoController {
