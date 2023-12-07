@@ -17,7 +17,6 @@ import lombok.NoArgsConstructor;
 @Table(name="hospedes")
 @Entity(name="Hospede")
 @Getter
-@AllArgsConstructor
 @EqualsAndHashCode(of="id")
 public class Hospede {
 
@@ -118,6 +117,20 @@ public class Hospede {
 
 	public void setUsuarioId(Long usuarioId) {
 		this.usuarioId = usuarioId;
+	}
+
+	public Hospede(Long usuarioId, String numeroDocumento, String tipoDocumento, String nome, Long telefone,
+			String email, String endereco, Date dataNascimento, Date dataCadastro) {
+		
+		this.usuarioId = usuarioId;
+		this.numeroDocumento = numeroDocumento;
+		this.tipoDocumento = tipoDocumento;
+		this.nome = nome;
+		this.telefone = telefone;
+		this.email = email;
+		this.endereco = endereco;
+		this.dataNascimento = dataNascimento;
+		this.dataCadastro = dataCadastro;
 	}
 	
 	

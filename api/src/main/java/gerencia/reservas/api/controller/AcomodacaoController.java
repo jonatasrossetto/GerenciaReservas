@@ -17,10 +17,7 @@ import gerencia.reservas.api.entities.acomodacao.AcomodacaoRepository;
 import gerencia.reservas.api.entities.acomodacao.DadosAtualizacaoAcomodacao;
 import gerencia.reservas.api.entities.acomodacao.DadosCadastroAcomodacao;
 import gerencia.reservas.api.entities.acomodacao.DadosDetalhamentoAcomodacao;
-import gerencia.reservas.api.entities.hospede.DadosAtualizacaoHospede;
-import gerencia.reservas.api.entities.hospede.DadosCadastroHospede;
-import gerencia.reservas.api.entities.hospede.DadosDetalhamentoHospede;
-import gerencia.reservas.api.entities.hospede.Hospede;
+
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 

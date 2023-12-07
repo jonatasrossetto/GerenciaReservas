@@ -36,19 +36,26 @@ public class HospedeController {
 	
 	@GetMapping("/hello")
 	public String HelloWorld() {
+		System.out.println("/hospede/hello controller");
 		return "O endpoint /hospede está funcionando";
 	}
 	
 	@GetMapping("/{id}")
 	public ResponseEntity detalhar(@PathVariable Long id) {
 		System.out.println("** DETALHAR HOSPEDE ** ");
+		System.out.println("id: "+id);
 
 		//verifica se existe o id informado
 		if (!repository.existsById(id)) {
+			System.out.println("Não existe id informado");
 			return ResponseEntity.badRequest().body("Id de hóspede inexistente");
 		}
-				
+		if (repository.existsById(id)) {
+			System.out.println("Existe id informado");
+		}
+		
 		Hospede hospede = repository.getReferenceById(id);
+		System.out.println("hospede.getNome(): "+hospede.getNome());
 		
 		return ResponseEntity.ok(new DadosDetalhamentoHospede(hospede));
 	}
