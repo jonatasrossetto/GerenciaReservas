@@ -21,11 +21,18 @@ import gerencia.reservas.api.entities.hospede.DadosDetalhamentoHospede;
 import gerencia.reservas.api.entities.hospede.Hospede;
 import gerencia.reservas.api.entities.hospede.HospedeRepository;
 import gerencia.reservas.api.infra.security.TokenService;
+import io.swagger.v3.oas.annotations.*;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/hospede")
+@Tag(name = "Hospede Controller", description = "Operações com a tabela de hóspedes")
+@SecurityRequirement(name = "bearer-key")
 public class HospedeController {
 	
 	@Autowired
@@ -34,12 +41,19 @@ public class HospedeController {
 	@Autowired
 	TokenService tokenService;
 	
+	@Operation(summary = "Health check para /hospede")
 	@GetMapping("/hello")
 	public String HelloWorld() {
 		System.out.println("/hospede/hello controller");
 		return "O endpoint /hospede está funcionando";
 	}
 	
+	@Operation(summary = "Retorna os dados do hospede com o id informado")
+	@ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "New Employee added"),
+            @ApiResponse(responseCode = "400", description = "Bad Request"),
+            @ApiResponse(responseCode = "500", description = "Internal Server Error")
+    })
 	@GetMapping("/{id}")
 	public ResponseEntity detalhar(@PathVariable Long id) {
 		System.out.println("** DETALHAR HOSPEDE ** ");
@@ -62,6 +76,7 @@ public class HospedeController {
 	
 	@PostMapping
 	@Transactional
+	@Operation(summary = "Cadastra um novo hóspede")
 	public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroHospede dados, UriComponentsBuilder uriBuilder, @RequestHeader HttpHeaders headers) {
 		System.out.println("** CADASTRAR HOSPEDE ** ");
 		String idUsuario = tokenService.getIdUsuarioHeader(headers);

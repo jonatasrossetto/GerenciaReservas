@@ -32,6 +32,7 @@ public class SecurityFilter extends OncePerRequestFilter {
 		System.out.println("** DO FILTER INTERNAL **");
 			
 		var tokenJWT = recuperarToken(request);
+		System.out.println(tokenJWT);
 		
 		if (tokenJWT != null) {
 			
