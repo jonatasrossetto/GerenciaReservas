@@ -1,12 +1,6 @@
 ## UNISENAI - Análise e Desenvolvimento de Sistemas<br>
 
 ## PROJETO APLICADO 2 - 2023-2<br>
-
-- Evando dos Reis Ferreira Alves
-- Gabriel Oliveira da Silva
-- Jônatas Fred Rossetto
-- Lucas José de Paula
-
 # Aplicativo Web para gerenciar as reservas de uma pousada <br>
 
 Neste documento
